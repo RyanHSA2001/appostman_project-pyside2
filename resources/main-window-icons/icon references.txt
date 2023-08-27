@@ -1,0 +1,50 @@
+icone home:
+
+Icon by <a class="link_pro" href="https://freeicons.io/ui-icons/home-icon-54268">Anu Rocks</a>
+on <a href="https://freeicons.io">freeicons.io</a>
+
+icone gear:
+
+Icon by <a href="https://freeicons.io/profile/722">Fasil</a> on <a href="https://freeicons.io">freeicons.io</a>
+
+icon people:
+
+Icon by <a class="link_pro" href="https://freeicons.io/free-summer-travel/people-outline-icon-45469">Anu Rocks</a>
+on <a href="https://freeicons.io">freeicons.io</a>
+
+icon message:
+
+Icon by <a class="link_pro" href="https://freeicons.io/common-style-icons-20/comment-message-icon-19472">icon king1</a>
+on <a href="https://freeicons.io">freeicons.io</a>
+
+icon help:
+
+Icon by <a href="https://freeicons.io/profile/730">Anu Rocks</a> on <a href="https://freeicons.io">freeicons.io</a>
+
+icon info:
+
+Icon by <a class="link_pro" href="https://freeicons.io/ui-icons/info-icon-54277">Anu Rocks</a>
+on <a href="https://freeicons.io">freeicons.io</a>
+
+logo icon:
+
+Icon by <a href="https://freeicons.io/profile/2257">www.wishforge.games</a> on <a href="https://freeicons.io">freeicons.io</a>
+
+icon directory:
+
+Icon by <a class="link_pro" href="https://freeicons.io/common-style-icons-4/directory-search-icon-10823">icon king1</a>
+on <a href="https://freeicons.io">freeicons.io</a>
+
+icon down arrow:
+
+Icon by <a class="link_pro" href="https://freeicons.io/office-and-workstation-icons-5/left-down-icon-18916">Free Preloaders</a>
+on <a href="https://freeicons.io">freeicons.io</a>
+
+dashboard:
+
+Icon by <a href="https://freeicons.io/profile/75801">Hilmy Abiyyu Asad</a> on <a href="https://freeicons.io">freeicons.io</a>
+
+minimize:
+
+<a href="https://www.flaticon.com/free-icons/minimize" title="minimize icons">Minimize icons created by Smashicons - Flaticon</a>
+
