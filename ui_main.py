@@ -17,7 +17,8 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(953, 626)
+        MainWindow.resize(1027, 626)
+        MainWindow.setMinimumSize(QSize(1027, 626))
         icon = QIcon()
         icon.addFile(u"resources/mail.png", QSize(), QIcon.Normal, QIcon.Off)
         MainWindow.setWindowIcon(icon)
@@ -506,6 +507,7 @@ class Ui_MainWindow(object):
         self.frame_main_page2.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_9 = QHBoxLayout(self.frame_main_page2)
         self.horizontalLayout_9.setObjectName(u"horizontalLayout_9")
+        self.horizontalLayout_9.setContentsMargins(0, -1, 0, -1)
         self.frame = QFrame(self.frame_main_page2)
         self.frame.setObjectName(u"frame")
         self.frame.setStyleSheet(u"background-color: rgb(217, 225, 230);")
@@ -523,7 +525,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 450, 458))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 496, 458))
         self.verticalLayout_20 = QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout_20.setObjectName(u"verticalLayout_20")
         self.label = QLabel(self.scrollAreaWidgetContents)
@@ -549,14 +551,14 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_20.addWidget(self.label_2)
 
-        self.pushButton = QPushButton(self.scrollAreaWidgetContents)
-        self.pushButton.setObjectName(u"pushButton")
-        sizePolicy2.setHeightForWidth(self.pushButton.sizePolicy().hasHeightForWidth())
-        self.pushButton.setSizePolicy(sizePolicy2)
-        self.pushButton.setMinimumSize(QSize(120, 40))
-        self.pushButton.setFont(font1)
-        self.pushButton.setCursor(QCursor(Qt.PointingHandCursor))
-        self.pushButton.setStyleSheet(u"QPushButton{\n"
+        self.button_search_recipients = QPushButton(self.scrollAreaWidgetContents)
+        self.button_search_recipients.setObjectName(u"button_search_recipients")
+        sizePolicy2.setHeightForWidth(self.button_search_recipients.sizePolicy().hasHeightForWidth())
+        self.button_search_recipients.setSizePolicy(sizePolicy2)
+        self.button_search_recipients.setMinimumSize(QSize(120, 40))
+        self.button_search_recipients.setFont(font1)
+        self.button_search_recipients.setCursor(QCursor(Qt.PointingHandCursor))
+        self.button_search_recipients.setStyleSheet(u"QPushButton{\n"
 "background-color: rgb(158, 195, 255);\n"
 "border: 1px solid;\n"
 "border-radius:5px\n"
@@ -569,18 +571,19 @@ class Ui_MainWindow(object):
 "}\n"
 "")
 
-        self.verticalLayout_20.addWidget(self.pushButton, 0, Qt.AlignHCenter)
+        self.verticalLayout_20.addWidget(self.button_search_recipients, 0, Qt.AlignHCenter)
 
-        self.label_3 = QLabel(self.scrollAreaWidgetContents)
-        self.label_3.setObjectName(u"label_3")
-        self.label_3.setMaximumSize(QSize(16777215, 60))
+        self.label_file_path_recipients = QLabel(self.scrollAreaWidgetContents)
+        self.label_file_path_recipients.setObjectName(u"label_file_path_recipients")
+        self.label_file_path_recipients.setMaximumSize(QSize(16777215, 60))
         font8 = QFont()
         font8.setFamily(u"Rockwell")
         font8.setPointSize(12)
-        self.label_3.setFont(font8)
-        self.label_3.setAlignment(Qt.AlignCenter)
+        self.label_file_path_recipients.setFont(font8)
+        self.label_file_path_recipients.setAlignment(Qt.AlignCenter)
+        self.label_file_path_recipients.setWordWrap(True)
 
-        self.verticalLayout_20.addWidget(self.label_3)
+        self.verticalLayout_20.addWidget(self.label_file_path_recipients)
 
         self.frame_3 = QFrame(self.scrollAreaWidgetContents)
         self.frame_3.setObjectName(u"frame_3")
@@ -590,39 +593,53 @@ class Ui_MainWindow(object):
         self.frame_3.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_12 = QHBoxLayout(self.frame_3)
         self.horizontalLayout_12.setObjectName(u"horizontalLayout_12")
-        self.pushButton_2 = QPushButton(self.frame_3)
-        self.pushButton_2.setObjectName(u"pushButton_2")
-        self.pushButton_2.setEnabled(False)
-        sizePolicy2.setHeightForWidth(self.pushButton_2.sizePolicy().hasHeightForWidth())
-        self.pushButton_2.setSizePolicy(sizePolicy2)
-        self.pushButton_2.setMinimumSize(QSize(150, 40))
-        self.pushButton_2.setFont(font1)
-        self.pushButton_2.setCursor(QCursor(Qt.PointingHandCursor))
-        self.pushButton_2.setStyleSheet(u"QPushButton{\n"
+        self.spacer_frame_3 = QFrame(self.frame_3)
+        self.spacer_frame_3.setObjectName(u"spacer_frame_3")
+        self.spacer_frame_3.setFrameShape(QFrame.StyledPanel)
+        self.spacer_frame_3.setFrameShadow(QFrame.Raised)
+
+        self.horizontalLayout_12.addWidget(self.spacer_frame_3)
+
+        self.button_validar = QPushButton(self.frame_3)
+        self.button_validar.setObjectName(u"button_validar")
+        self.button_validar.setEnabled(False)
+        sizePolicy2.setHeightForWidth(self.button_validar.sizePolicy().hasHeightForWidth())
+        self.button_validar.setSizePolicy(sizePolicy2)
+        self.button_validar.setMinimumSize(QSize(150, 40))
+        self.button_validar.setFont(font1)
+        self.button_validar.setCursor(QCursor(Qt.PointingHandCursor))
+        self.button_validar.setStyleSheet(u"QPushButton{\n"
 "background-color: rgb(200, 208, 213);\n"
 "border: 1px solid;\n"
 "border-radius:5px\n"
 "}\n"
 "")
 
-        self.horizontalLayout_12.addWidget(self.pushButton_2)
+        self.horizontalLayout_12.addWidget(self.button_validar)
 
-        self.pushButton_3 = QPushButton(self.frame_3)
-        self.pushButton_3.setObjectName(u"pushButton_3")
-        self.pushButton_3.setEnabled(False)
-        sizePolicy2.setHeightForWidth(self.pushButton_3.sizePolicy().hasHeightForWidth())
-        self.pushButton_3.setSizePolicy(sizePolicy2)
-        self.pushButton_3.setMinimumSize(QSize(150, 40))
-        self.pushButton_3.setFont(font1)
-        self.pushButton_3.setCursor(QCursor(Qt.PointingHandCursor))
-        self.pushButton_3.setStyleSheet(u"QPushButton{\n"
+        self.button_cadastrar = QPushButton(self.frame_3)
+        self.button_cadastrar.setObjectName(u"button_cadastrar")
+        self.button_cadastrar.setEnabled(False)
+        sizePolicy2.setHeightForWidth(self.button_cadastrar.sizePolicy().hasHeightForWidth())
+        self.button_cadastrar.setSizePolicy(sizePolicy2)
+        self.button_cadastrar.setMinimumSize(QSize(150, 40))
+        self.button_cadastrar.setFont(font1)
+        self.button_cadastrar.setCursor(QCursor(Qt.PointingHandCursor))
+        self.button_cadastrar.setStyleSheet(u"QPushButton{\n"
 "background-color: rgb(200, 208, 213);\n"
 "border: 1px solid;\n"
 "border-radius:5px\n"
 "}\n"
 "")
 
-        self.horizontalLayout_12.addWidget(self.pushButton_3)
+        self.horizontalLayout_12.addWidget(self.button_cadastrar)
+
+        self.spacer_frame_4 = QFrame(self.frame_3)
+        self.spacer_frame_4.setObjectName(u"spacer_frame_4")
+        self.spacer_frame_4.setFrameShape(QFrame.StyledPanel)
+        self.spacer_frame_4.setFrameShadow(QFrame.Raised)
+
+        self.horizontalLayout_12.addWidget(self.spacer_frame_4)
 
 
         self.verticalLayout_20.addWidget(self.frame_3)
@@ -641,34 +658,49 @@ class Ui_MainWindow(object):
         self.frame_2.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_11 = QHBoxLayout(self.frame_2)
         self.horizontalLayout_11.setObjectName(u"horizontalLayout_11")
+        self.horizontalLayout_11.setContentsMargins(0, -1, 0, -1)
         self.scrollArea_2 = QScrollArea(self.frame_2)
         self.scrollArea_2.setObjectName(u"scrollArea_2")
         self.scrollArea_2.setWidgetResizable(True)
         self.scrollAreaWidgetContents_2 = QWidget()
         self.scrollAreaWidgetContents_2.setObjectName(u"scrollAreaWidgetContents_2")
-        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 431, 440))
+        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 495, 440))
         self.verticalLayout_21 = QVBoxLayout(self.scrollAreaWidgetContents_2)
         self.verticalLayout_21.setObjectName(u"verticalLayout_21")
-        self.label_4 = QLabel(self.scrollAreaWidgetContents_2)
-        self.label_4.setObjectName(u"label_4")
-        self.label_4.setMinimumSize(QSize(0, 50))
-        self.label_4.setFont(font6)
-        self.label_4.setAlignment(Qt.AlignCenter)
+        self.label_recipients = QLabel(self.scrollAreaWidgetContents_2)
+        self.label_recipients.setObjectName(u"label_recipients")
+        self.label_recipients.setMinimumSize(QSize(0, 50))
+        font9 = QFont()
+        font9.setFamily(u"Palatino Linotype")
+        font9.setPointSize(16)
+        font9.setBold(True)
+        font9.setWeight(75)
+        self.label_recipients.setFont(font9)
+        self.label_recipients.setAlignment(Qt.AlignCenter)
 
-        self.verticalLayout_21.addWidget(self.label_4)
+        self.verticalLayout_21.addWidget(self.label_recipients)
 
-        self.tableWidget = QTableWidget(self.scrollAreaWidgetContents_2)
-        if (self.tableWidget.columnCount() < 2):
-            self.tableWidget.setColumnCount(2)
+        self.table_recipients = QTableWidget(self.scrollAreaWidgetContents_2)
+        if (self.table_recipients.columnCount() < 2):
+            self.table_recipients.setColumnCount(2)
         __qtablewidgetitem = QTableWidgetItem()
-        self.tableWidget.setHorizontalHeaderItem(0, __qtablewidgetitem)
+        self.table_recipients.setHorizontalHeaderItem(0, __qtablewidgetitem)
         __qtablewidgetitem1 = QTableWidgetItem()
-        self.tableWidget.setHorizontalHeaderItem(1, __qtablewidgetitem1)
-        self.tableWidget.setObjectName(u"tableWidget")
-        self.tableWidget.setFont(font1)
-        self.tableWidget.setStyleSheet(u"background-color: rgb(188, 196, 199);")
+        self.table_recipients.setHorizontalHeaderItem(1, __qtablewidgetitem1)
+        self.table_recipients.setObjectName(u"table_recipients")
+        self.table_recipients.setFont(font1)
+        self.table_recipients.viewport().setProperty("cursor", QCursor(Qt.PointingHandCursor))
+        self.table_recipients.setStyleSheet(u"background-color: rgb(227, 235, 240);\n"
+"")
+        self.table_recipients.setFrameShape(QFrame.NoFrame)
+        self.table_recipients.setAlternatingRowColors(True)
+        self.table_recipients.setSelectionMode(QAbstractItemView.NoSelection)
+        self.table_recipients.setShowGrid(True)
+        self.table_recipients.setGridStyle(Qt.SolidLine)
+        self.table_recipients.setWordWrap(False)
+        self.table_recipients.setCornerButtonEnabled(False)
 
-        self.verticalLayout_21.addWidget(self.tableWidget)
+        self.verticalLayout_21.addWidget(self.table_recipients)
 
         self.scrollArea_2.setWidget(self.scrollAreaWidgetContents_2)
 
@@ -908,14 +940,14 @@ class Ui_MainWindow(object):
         self.label_title_2.setText(QCoreApplication.translate("MainWindow", u"Destinat\u00e1rios", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:16pt;\">Cadastrar destinat\u00e1rios</span></p></body></html>", None))
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:14pt;\">Para realizar o cadastro de destinat\u00e1rios fa\u00e7a a importa\u00e7\u00e3o de um arquivo (.csv), para orienta\u00e7\u00e3oes referente ao leiaute e formato do arquivo acesse o menu AJUDA na barra lateral.</span></p></body></html>", None))
-        self.pushButton.setText(QCoreApplication.translate("MainWindow", u"Procurar", None))
-        self.label_3.setText(QCoreApplication.translate("MainWindow", u"Selecione um arquivo", None))
-        self.pushButton_2.setText(QCoreApplication.translate("MainWindow", u"Validar", None))
-        self.pushButton_3.setText(QCoreApplication.translate("MainWindow", u"Cadastrar", None))
-        self.label_4.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:16pt;\">Destinat\u00e1rios Encontrados</span></p></body></html>", None))
-        ___qtablewidgetitem = self.tableWidget.horizontalHeaderItem(0)
+        self.button_search_recipients.setText(QCoreApplication.translate("MainWindow", u"Procurar", None))
+        self.label_file_path_recipients.setText(QCoreApplication.translate("MainWindow", u"Selecione um arquivo", None))
+        self.button_validar.setText(QCoreApplication.translate("MainWindow", u"Validar", None))
+        self.button_cadastrar.setText(QCoreApplication.translate("MainWindow", u"Cadastrar", None))
+        self.label_recipients.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:16pt;\">Destinat\u00e1rios Encontrados:</span></p></body></html>", None))
+        ___qtablewidgetitem = self.table_recipients.horizontalHeaderItem(0)
         ___qtablewidgetitem.setText(QCoreApplication.translate("MainWindow", u"Nome", None));
-        ___qtablewidgetitem1 = self.tableWidget.horizontalHeaderItem(1)
+        ___qtablewidgetitem1 = self.table_recipients.horizontalHeaderItem(1)
         ___qtablewidgetitem1.setText(QCoreApplication.translate("MainWindow", u"E-mail", None));
         self.label_title_3.setText(QCoreApplication.translate("MainWindow", u"Mensagens", None))
         self.label_title_4.setText(QCoreApplication.translate("MainWindow", u"Configura\u00e7\u00f5es", None))

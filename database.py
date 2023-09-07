@@ -113,7 +113,16 @@ class LoginDataBase:
             return False
         return True
 
+    def check_logged_user_id(self, username, password_hash):
+        self.cursor.execute(
+            """
+            SELECT user_id FROM users WHERE name=? and password_hash=?
+            """, (username, password_hash))
 
+        result = self.cursor.fetchone()
+        if not result:
+            return False
+        return result[0]
 
 
 class SystemDataBase:
@@ -183,6 +192,19 @@ class SystemDataBase:
             );
             """)
 
+    def insert_recipient(self, name, email, age, sex, country_code):
+        self.cursor.execute(
+            """
+            INSERT OR REPLACE INTO recipients(name, email, age, sex, country_code) VALUES(?, ?, ?, ?, ?)
+            """, (name, email, age, sex, country_code))
+
+    def select_recipients(self):
+        self.cursor.execute(
+            """
+            SELECT name, email FROM recipients;
+            """)
+        result = self.cursor.fetchall()
+        return result
     def setup_database(self):
         self.create_table_users()
         self.create_table_recipients()

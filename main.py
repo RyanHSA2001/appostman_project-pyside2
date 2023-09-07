@@ -11,23 +11,26 @@ import hashlib
 import re
 import sys
 import csv
+import styles
 
 from Custom_Widgets.Widgets import *
 
 class UtilityFunctions:
+
+    def able_disable_buttons(self, button, able:bool, stylesheet):
+        button.setEnabled(able)
+        button.setStyleSheet(stylesheet)
 
     def open_message_box(self, icon, title, message, parent=None, ok_and_cancel=False):
         msg_box = QMessageBox(parent)
         msg_box.setIcon(icon)
         msg_box.setWindowTitle(title)
         msg_box.setText(message)
-
         font = QFont("Palatino Linotype", 12)
         msg_box.setFont(font)
 
         if ok_and_cancel:
             msg_box.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
-
         msg_box.exec()
 
     def validate_email(self, email):
@@ -43,7 +46,6 @@ class UtilityFunctions:
         bytes_password = user_password.encode("UTF-8")
         hash_obj.update(bytes_password)
         password_hash = hash_obj.hexdigest()
-
         return password_hash
 
 class Login(QWidget, Ui_Login, UtilityFunctions):
@@ -132,8 +134,8 @@ class Login(QWidget, Ui_Login, UtilityFunctions):
         with LoginDataBase() as db:
             if db.insert_user(username, password_hash, email, accept_emails):
 
-                user_id = db.select_last_user_id()
-                with SystemDataBase(name='user_' + str(user_id) + '.db') as sdb:
+                self.user_id = db.select_last_user_id()
+                with SystemDataBase(name='user_' + str(self.user_id) + '.db') as sdb:
                     sdb.setup_database()
 
                 self.open_message_box(QMessageBox.Information, "Sucesso", "Cadastro realizado com sucesso!", self)
@@ -159,7 +161,8 @@ class Login(QWidget, Ui_Login, UtilityFunctions):
 
         with LoginDataBase() as db:
                 if db.check_login(username, password_hash):
-                    self.main_window = MainWindow()
+                    self.user_id = db.check_logged_user_id(username, password_hash)
+                    self.main_window = MainWindow(self.user_id)
                     self.main_window.show()
                     self.close()
                     return
@@ -177,9 +180,10 @@ class Login(QWidget, Ui_Login, UtilityFunctions):
             self.pushButton_login.setShortcut('Enter')
 
 class MainWindow(QMainWindow, Ui_MainWindow, UtilityFunctions):
-    def __init__(self):
+    def __init__(self, user_id):
         super(MainWindow, self).__init__()
 
+        self.logged_user_db = "user_" + str(user_id) + ".db"
         self.setupUi(self)
         self.setWindowTitle("Appostman")
         self.setWindowFlags(QtCore.Qt.WindowType.FramelessWindowHint)
@@ -210,9 +214,20 @@ class MainWindow(QMainWindow, Ui_MainWindow, UtilityFunctions):
         self.button_minimize.clicked.connect(lambda: self.showMinimized())
         self.button_close.clicked.connect(lambda: self.close())
 
+        # Eventos tela de destinatários
+        self.button_search_recipients.clicked.connect(self.open_recipients_file_dialog)
+        self.button_validar.clicked.connect(self.validate_recipients)
+        self.button_cadastrar.clicked.connect(self.upload_recipients)
+        horizontal_header = self.table_recipients.horizontalHeader()
+        horizontal_header.setStyleSheet(styles.horizontal_header_style)
+        horizontal_header.setSectionResizeMode(0, QHeaderView.Stretch)
+        horizontal_header.setSectionResizeMode(1, QHeaderView.Stretch)
+        self.table_recipients.verticalHeader().setVisible(False)
+
+        self.show_recipients()
+
+
     def restore_or_maximize_window(self):
-
-
         if self.window_size == 0:
             self.window_size = 1
             self.showMaximized()
@@ -242,13 +257,131 @@ class MainWindow(QMainWindow, Ui_MainWindow, UtilityFunctions):
         self.animation.setEasingCurve(QEasingCurve.InOutQuart)
         self.animation.start()
 
+    # Funções tela de destinatários
+    def open_recipients_file_dialog(self):
+        file_dialog = QFileDialog(self)
+        file_dialog.setNameFilter("Valores Separados por Vírgula (*.csv)")
+        file_dialog.setFileMode(QFileDialog.ExistingFile)
+
+        if file_dialog.exec():
+            file_name = file_dialog.selectedFiles()[0]
+            self.label_file_path_recipients.setText(file_name)
+            self.able_disable_buttons(self.button_validar, True, styles.light_green_button)
+            self.recipients_filename = file_name
+        else:
+            self.label_file_path_recipients.setText("Selecione um arquivo")
+            self.able_disable_buttons(self.button_validar, False, styles.disabled_gray_button)
+
+        self.able_disable_buttons(self.button_cadastrar, False, styles.disabled_gray_button)
+
+    def get_contacts(self, filename) -> tuple:
+        names = []
+        emails = []
+        ages = []
+        sexes = []
+        country_codes = []
+        with open(filename, mode='r', encoding='utf-8') as recipients_file:
+            index = 0
+            for a_recipient in recipients_file:
+                index += 1
+                names.append(a_recipient.split(',')[0].replace('\n', ''))
+
+                email = a_recipient.split(',')[1].replace('\n', '')
+
+                if self.validate_email(email):
+                    emails.append(email)
+                else:
+                    error_message = f"Encontrado um e-mail inválido na linha {index}, por favor corrija o " \
+                                    "arquivo e tente novamente."
+                    self.open_message_box(QMessageBox.Warning, "Erro", error_message, self)
+                    return
+                ages.append(a_recipient.split(',')[2].replace('\n', ''))
+                sexes.append(a_recipient.split(',')[3].replace('\n', ''))
+                country_codes.append(a_recipient.split(',')[4].replace('\n', ''))
+
+            return names, emails, ages, sexes, country_codes
+
+    def validate_recipients(self):
+        try:
+            self.names, self.emails, self.ages, self.sexes, self.country_codes = self.get_contacts(
+                self.recipients_filename)
+
+            if len(self.names) == len(self.emails) and len(self.emails) == len(self.ages):
+                success_message = f"Arquivo válido.\nForam encontrados {len(self.emails)} contatos válidos."
+                self.open_message_box(QMessageBox.Information, "Sucesso", success_message, self)
+                self.able_disable_buttons(self.button_cadastrar, True, styles.light_green_button)
+            else:
+                self.open_message_box(QMessageBox.Warning, "Erro", "Erro desconhecido na leitura do arquivo", self)
+
+        except(IndexError, UnicodeDecodeError):
+            self.open_message_box(QMessageBox.Warning, "Erro", "Arquivo inválido. Consulte o menu AJUDA para uma "
+                                                               "explicação do leiaute do arquivo.", self)
+        except ValueError as e:
+            self.open_message_box(QMessageBox.Warning, "Erro", str(e), self)
+
+    def upload_recipients(self):
+        try:
+            with SystemDataBase(self.logged_user_db) as db:
+                for i, name in enumerate(self.names):
+                    db.insert_recipient(name, self.emails[i], self.ages[i], self.sexes[i], self.country_codes[i])
+
+                self.open_message_box(QMessageBox.Information, "Sucesso", "Destinatários cadastrados com "
+                                                                          "sucesso!", self)
+
+                self.label_file_path_recipients.setText("Selecione um arquivo")
+                self.able_disable_buttons(self.button_validar, False, styles.disabled_gray_button)
+                self.able_disable_buttons(self.button_cadastrar, False, styles.disabled_gray_button)
+            self.show_recipients()
+
+        except Exception as e:
+            self.open_message_box(QMessageBox.Warning, "Erro", str(e), self)
+
+    def show_recipients(self):
+        with SystemDataBase(self.logged_user_db) as db:
+            result = db.select_recipients()
+
+        row = 0
+        self.table_recipients.setRowCount(len(result))
+        for recipient in result:
+            item1 = QTableWidgetItem(recipient[0])
+            item2 = QTableWidgetItem(recipient[1])
+
+            font = QFont("Rockwell", 12)
+            item1.setFont(font)
+            item2.setFont(font)
+
+            item1.setFlags(item1.flags() ^ Qt.ItemIsEditable)
+            item2.setFlags(item2.flags() ^ Qt.ItemIsEditable)
+
+            self.table_recipients.setItem(row, 0, item1)
+            self.table_recipients.setItem(row, 1, item2)
+
+            row +=1
+
+            self.label_recipients.setText(f"Destinatários Encontrados: {row}")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 if __name__ == "__main__":
     with LoginDataBase() as db:
         db.setup_database()
 
     app = QApplication(sys.argv)
 
-    main_window = MainWindow()
+    main_window = Login()
     main_window.show()
 
     sys.exit(app.exec_())
