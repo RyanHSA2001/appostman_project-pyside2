@@ -13,6 +13,8 @@ import sys
 import csv
 import styles
 import webbrowser
+import os
+import shutil
 
 from Custom_Widgets.Widgets import *
 
@@ -23,16 +25,17 @@ class UtilityFunctions:
         button.setStyleSheet(stylesheet)
 
     def open_message_box(self, icon, title, message, parent=None, ok_and_cancel=False):
-        msg_box = QMessageBox(parent)
-        msg_box.setIcon(icon)
-        msg_box.setWindowTitle(title)
-        msg_box.setText(message)
+        self.msg_box = QMessageBox(parent)
+        self.msg_box.setIcon(icon)
+        self.msg_box.setWindowTitle(title)
+        self.msg_box.setText(message)
         font = QFont("Palatino Linotype", 12)
-        msg_box.setFont(font)
+        self.msg_box.setFont(font)
 
         if ok_and_cancel:
-            msg_box.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
-        msg_box.exec()
+            self.msg_box.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+
+        return self.msg_box.exec()
 
     def validate_email(self, email):
         standard = r'^[\w]+[\.\w-]*@[\w-]+\.[a-zA-Z]{2,}(\.[a-zA-Z]{2})?$'
@@ -185,11 +188,14 @@ class MainWindow(QMainWindow, Ui_MainWindow, UtilityFunctions):
         super(MainWindow, self).__init__()
 
         self.logged_user_db = "user_" + str(user_id) + ".db"
+        self.messages_folder = "messages"
+        os.makedirs(self.messages_folder, exist_ok=True)
         self.setupUi(self)
         self.setWindowTitle("Appostman")
         self.setWindowFlags(QtCore.Qt.WindowType.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WidgetAttribute.WA_TranslucentBackground)
         self.window_size = 0
+
 
         def moveWindow(e):
 
@@ -231,6 +237,8 @@ class MainWindow(QMainWindow, Ui_MainWindow, UtilityFunctions):
         self.button_search_message.clicked.connect(self.open_message_file_dialog)
         self.button_validar_message.clicked.connect(self.validate_html)
         self.button_cadastrar_message.clicked.connect(self.upload_message)
+        self.button_cadastrar_message.clicked.connect(self.refresh_message_list)
+        self.show_messages()
 
 
     def restore_or_maximize_window(self):
@@ -372,30 +380,77 @@ class MainWindow(QMainWindow, Ui_MainWindow, UtilityFunctions):
         file_dialog.setFileMode(QFileDialog.ExistingFile)
 
         if file_dialog.exec():
-            file_name = file_dialog.selectedFiles()[0]
-            self.label_file_path_message.setText(file_name)
+            file_path = file_dialog.selectedFiles()[0]
+            self.label_file_path_message.setText(file_path)
             self.able_disable_buttons(self.button_validar_message, True, styles.light_yellow_button)
             self.able_disable_buttons(self.lineEdit_message_name, True, styles.line_edit_style)
-            self.message_filename = file_name
+            self.able_disable_buttons(self.button_cadastrar_message, True, styles.light_green_button)
+
+            self.message_filename = os.path.basename(file_path)
+            self.message_original_filepath = file_path
         else:
             self.label_file_path_message.setText("Selecione um arquivo")
             self.able_disable_buttons(self.button_validar_message, False, styles.disabled_gray_button)
             self.able_disable_buttons(self.lineEdit_message_name, False, styles.line_edit_gray)
-
-        self.able_disable_buttons(self.button_cadastrar_message, False, styles.disabled_gray_button)
+            self.able_disable_buttons(self.button_cadastrar, False, styles.disabled_gray_button)
+            self.lineEdit_message_name.setText("")
 
     def validate_html(self):
-        webbrowser.open_new_tab(self.message_filename)
-        self.able_disable_buttons(self.button_cadastrar_message, True, styles.light_green_button)
+        webbrowser.open_new_tab(self.message_original_filepath)
+
+    def show_messages(self):
+        with SystemDataBase(self.logged_user_db) as db:
+            messages = db.select_all_messages()
+        for message in messages:
+            message_item = str(message[0]) + " - " + message[2]
+            self.listWidget_message.addItem(message_item)
+
+    def copy_to_messages_directory(self, file):
+        os.makedirs(self.messages_folder, exist_ok=True)
+        shutil.copy(file, self.messages_folder)
 
     def upload_message(self):
         if not self.lineEdit_message_name.text():
             self.open_message_box(QMessageBox.Warning, "Atenção!", "Por favor digite um nome para a mensagem", self)
             return
-        print("vamo que vamo")
+
+        with SystemDataBase(self.logged_user_db) as db:
+            message_name = self.lineEdit_message_name.text()
+
+            if not db.select_message_byname(message_name):
+                self.message_new_filepath = os.path.join(self.messages_folder, self.message_filename)
+
+                existing_message_id = db.select_message_bypath(self.message_new_filepath)
+                alert_message = f"Arquivo já importado na mensagem {existing_message_id}, deseja substituí-lo?"
+
+                if existing_message_id:
+
+                    result = self.open_message_box(QMessageBox.Warning, "Atenção!", alert_message,
+                                          self, True)
+
+                    if result == QMessageBox.Ok:
+                        self.copy_to_messages_directory(self.message_original_filepath)
+                        self.message_id = db.insert_message(self.message_new_filepath, message_name)
+                        self.open_message_box(QMessageBox.Information, "Sucesso!", "Mensagem cadastrada com sucesso",
+                                              self)
+                        return
+
+                    return
+
+            self.open_message_box(QMessageBox.Warning, "Erro!", "Esse nome já está sendo utilizado", self)
+            return
+
+
         self.able_disable_buttons(self.button_cadastrar_message, False, styles.disabled_gray_button)
         self.able_disable_buttons(self.button_validar_message, False, styles.disabled_gray_button)
         self.able_disable_buttons(self.lineEdit_message_name, False, styles.line_edit_gray)
+        self.lineEdit_message_name.setText("")
+
+    def refresh_message_list(self):
+        self.listWidget_message.clear()
+        self.show_messages()
+
+
 
 
 if __name__ == "__main__":

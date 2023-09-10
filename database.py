@@ -163,7 +163,8 @@ class SystemDataBase:
             """
             CREATE TABLE IF NOT EXISTS 'messages'(
             'message_id' INTEGER PRIMARY KEY AUTOINCREMENT,
-            'message_path' TEXT NOT NULL UNIQUE
+            'path' TEXT NOT NULL UNIQUE,
+            'name' TEXT NOT NULL UNIQUE
             );
             """)
 
@@ -197,6 +198,48 @@ class SystemDataBase:
             """
             INSERT OR REPLACE INTO recipients(name, email, age, sex, country_code) VALUES(?, ?, ?, ?, ?)
             """, (name, email, age, sex, country_code))
+
+    def select_message_byname(self, name):
+        self.cursor.execute(
+            """
+            SELECT message_id FROM messages WHERE name=?
+            """, (name,))
+
+        result = self.cursor.fetchone()
+        if not result:
+            return False
+        return result[0]
+
+    def select_message_bypath(self, path):
+        self.cursor.execute(
+            """
+            SELECT message_id FROM messages WHERE path=?
+            """, (path,))
+
+        result = self.cursor.fetchone()
+        if not result:
+            return False
+        return result[0]
+
+    def insert_message(self, path, name):
+        self.cursor.execute(
+            """
+            INSERT OR REPLACE INTO messages(path, name) VALUES(?, ?)
+            """, (path, name))
+
+        last_id = self.cursor.lastrowid
+
+        return last_id
+
+    def select_all_messages(self):
+        self.cursor.execute(
+            """
+            SELECT * FROM messages
+            """)
+        result = self.cursor.fetchall()
+        return result
+
+
 
     def select_recipients(self):
         self.cursor.execute(

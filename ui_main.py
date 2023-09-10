@@ -935,6 +935,7 @@ class Ui_MainWindow(object):
 
         self.listWidget_message = QListWidget(self.scrollAreaWidgetContents_6)
         self.listWidget_message.setObjectName(u"listWidget_message")
+        self.listWidget_message.setFont(font1)
         self.listWidget_message.setStyleSheet(u"background-color: rgb(227, 235, 240);")
 
         self.verticalLayout_23.addWidget(self.listWidget_message)

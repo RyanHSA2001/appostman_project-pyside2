@@ -1926,6 +1926,12 @@ border-radius:5px
                         </item>
                         <item>
                          <widget class="QListWidget" name="listWidget_message">
+                          <property name="font">
+                           <font>
+                            <family>Palatino Linotype</family>
+                            <pointsize>12</pointsize>
+                           </font>
+                          </property>
                           <property name="styleSheet">
                            <string notr="true">background-color: rgb(227, 235, 240);</string>
                           </property>
