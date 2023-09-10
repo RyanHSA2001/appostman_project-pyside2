@@ -508,16 +508,16 @@ class Ui_MainWindow(object):
         self.horizontalLayout_9 = QHBoxLayout(self.frame_main_page2)
         self.horizontalLayout_9.setObjectName(u"horizontalLayout_9")
         self.horizontalLayout_9.setContentsMargins(0, -1, 0, -1)
-        self.frame = QFrame(self.frame_main_page2)
-        self.frame.setObjectName(u"frame")
-        self.frame.setStyleSheet(u"background-color: rgb(217, 225, 230);")
-        self.frame.setFrameShape(QFrame.StyledPanel)
-        self.frame.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_10 = QHBoxLayout(self.frame)
+        self.frame_destinatarios_encontrados = QFrame(self.frame_main_page2)
+        self.frame_destinatarios_encontrados.setObjectName(u"frame_destinatarios_encontrados")
+        self.frame_destinatarios_encontrados.setStyleSheet(u"background-color: rgb(217, 225, 230);")
+        self.frame_destinatarios_encontrados.setFrameShape(QFrame.StyledPanel)
+        self.frame_destinatarios_encontrados.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_10 = QHBoxLayout(self.frame_destinatarios_encontrados)
         self.horizontalLayout_10.setSpacing(0)
         self.horizontalLayout_10.setObjectName(u"horizontalLayout_10")
         self.horizontalLayout_10.setContentsMargins(0, 0, 0, 0)
-        self.scrollArea = QScrollArea(self.frame)
+        self.scrollArea = QScrollArea(self.frame_destinatarios_encontrados)
         self.scrollArea.setObjectName(u"scrollArea")
         sizePolicy.setHeightForWidth(self.scrollArea.sizePolicy().hasHeightForWidth())
         self.scrollArea.setSizePolicy(sizePolicy)
@@ -649,7 +649,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_10.addWidget(self.scrollArea)
 
 
-        self.horizontalLayout_9.addWidget(self.frame)
+        self.horizontalLayout_9.addWidget(self.frame_destinatarios_encontrados)
 
         self.frame_2 = QFrame(self.frame_main_page2)
         self.frame_2.setObjectName(u"frame_2")
@@ -742,10 +742,232 @@ class Ui_MainWindow(object):
         self.frame_main_page3.setSizePolicy(sizePolicy1)
         self.frame_main_page3.setFrameShape(QFrame.StyledPanel)
         self.frame_main_page3.setFrameShadow(QFrame.Raised)
-        self.gridLayout_3 = QGridLayout(self.frame_main_page3)
-        self.gridLayout_3.setSpacing(0)
-        self.gridLayout_3.setObjectName(u"gridLayout_3")
-        self.gridLayout_3.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_13 = QHBoxLayout(self.frame_main_page3)
+        self.horizontalLayout_13.setObjectName(u"horizontalLayout_13")
+        self.horizontalLayout_13.setContentsMargins(0, -1, 0, -1)
+        self.frame_cadastrar_mensagens = QFrame(self.frame_main_page3)
+        self.frame_cadastrar_mensagens.setObjectName(u"frame_cadastrar_mensagens")
+        self.frame_cadastrar_mensagens.setMaximumSize(QSize(496, 458))
+        self.frame_cadastrar_mensagens.setStyleSheet(u"background-color: rgb(217, 225, 230);")
+        self.frame_cadastrar_mensagens.setFrameShape(QFrame.StyledPanel)
+        self.frame_cadastrar_mensagens.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_14 = QHBoxLayout(self.frame_cadastrar_mensagens)
+        self.horizontalLayout_14.setSpacing(0)
+        self.horizontalLayout_14.setObjectName(u"horizontalLayout_14")
+        self.horizontalLayout_14.setContentsMargins(0, 0, 0, 0)
+        self.scrollArea_5 = QScrollArea(self.frame_cadastrar_mensagens)
+        self.scrollArea_5.setObjectName(u"scrollArea_5")
+        sizePolicy.setHeightForWidth(self.scrollArea_5.sizePolicy().hasHeightForWidth())
+        self.scrollArea_5.setSizePolicy(sizePolicy)
+        self.scrollArea_5.setStyleSheet(u"")
+        self.scrollArea_5.setWidgetResizable(True)
+        self.scrollAreaWidgetContents_7 = QWidget()
+        self.scrollAreaWidgetContents_7.setObjectName(u"scrollAreaWidgetContents_7")
+        self.scrollAreaWidgetContents_7.setGeometry(QRect(0, 0, 496, 458))
+        self.verticalLayout_24 = QVBoxLayout(self.scrollAreaWidgetContents_7)
+        self.verticalLayout_24.setSpacing(6)
+        self.verticalLayout_24.setObjectName(u"verticalLayout_24")
+        self.verticalLayout_24.setContentsMargins(9, 9, 9, 9)
+        self.label_5 = QLabel(self.scrollAreaWidgetContents_7)
+        self.label_5.setObjectName(u"label_5")
+        self.label_5.setMaximumSize(QSize(16777215, 50))
+        self.label_5.setFont(font6)
+        self.label_5.setAlignment(Qt.AlignCenter)
+
+        self.verticalLayout_24.addWidget(self.label_5)
+
+        self.label_6 = QLabel(self.scrollAreaWidgetContents_7)
+        self.label_6.setObjectName(u"label_6")
+        self.label_6.setMaximumSize(QSize(16777215, 140))
+        self.label_6.setFont(font7)
+        self.label_6.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
+        self.label_6.setWordWrap(True)
+
+        self.verticalLayout_24.addWidget(self.label_6)
+
+        self.button_search_message = QPushButton(self.scrollAreaWidgetContents_7)
+        self.button_search_message.setObjectName(u"button_search_message")
+        sizePolicy2.setHeightForWidth(self.button_search_message.sizePolicy().hasHeightForWidth())
+        self.button_search_message.setSizePolicy(sizePolicy2)
+        self.button_search_message.setMinimumSize(QSize(120, 40))
+        self.button_search_message.setFont(font1)
+        self.button_search_message.setCursor(QCursor(Qt.PointingHandCursor))
+        self.button_search_message.setStyleSheet(u"QPushButton{\n"
+"background-color: rgb(158, 195, 255);\n"
+"border: 1px solid;\n"
+"border-radius:5px\n"
+"}\n"
+"\n"
+"QPushButton:hover\n"
+"{\n"
+"background-color: rgb(212, 220, 226);\n"
+"color: rgb(0, 0, 0);\n"
+"}\n"
+"")
+
+        self.verticalLayout_24.addWidget(self.button_search_message, 0, Qt.AlignHCenter)
+
+        self.label_file_path_message = QLabel(self.scrollAreaWidgetContents_7)
+        self.label_file_path_message.setObjectName(u"label_file_path_message")
+        self.label_file_path_message.setMaximumSize(QSize(16777215, 60))
+        self.label_file_path_message.setFont(font8)
+        self.label_file_path_message.setAlignment(Qt.AlignCenter)
+        self.label_file_path_message.setWordWrap(True)
+
+        self.verticalLayout_24.addWidget(self.label_file_path_message)
+
+        self.lineEdit_message_name = QLineEdit(self.scrollAreaWidgetContents_7)
+        self.lineEdit_message_name.setObjectName(u"lineEdit_message_name")
+        self.lineEdit_message_name.setEnabled(False)
+        self.lineEdit_message_name.setMinimumSize(QSize(250, 30))
+        self.lineEdit_message_name.setMaximumSize(QSize(250, 30))
+        font10 = QFont()
+        font10.setFamily(u"Palatino Linotype")
+        font10.setPointSize(12)
+        font10.setItalic(False)
+        self.lineEdit_message_name.setFont(font10)
+        self.lineEdit_message_name.setStyleSheet(u"QLineEdit\n"
+"{\n"
+"background-color: rgb(200, 208, 213);\n"
+"border: 1px solid;\n"
+"border-radius:5px\n"
+"}\n"
+"\n"
+"\n"
+"QLineEdit:hover\n"
+"{\n"
+"background-color: rgb(236, 244, 248);\n"
+"}")
+        self.lineEdit_message_name.setFrame(False)
+        self.lineEdit_message_name.setAlignment(Qt.AlignCenter)
+
+        self.verticalLayout_24.addWidget(self.lineEdit_message_name, 0, Qt.AlignHCenter)
+
+        self.frame_botoes_message = QFrame(self.scrollAreaWidgetContents_7)
+        self.frame_botoes_message.setObjectName(u"frame_botoes_message")
+        self.frame_botoes_message.setMaximumSize(QSize(16777215, 70))
+        self.frame_botoes_message.setStyleSheet(u"")
+        self.frame_botoes_message.setFrameShape(QFrame.StyledPanel)
+        self.frame_botoes_message.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_17 = QHBoxLayout(self.frame_botoes_message)
+        self.horizontalLayout_17.setObjectName(u"horizontalLayout_17")
+        self.spacer_frame_7 = QFrame(self.frame_botoes_message)
+        self.spacer_frame_7.setObjectName(u"spacer_frame_7")
+        self.spacer_frame_7.setFrameShape(QFrame.StyledPanel)
+        self.spacer_frame_7.setFrameShadow(QFrame.Raised)
+
+        self.horizontalLayout_17.addWidget(self.spacer_frame_7)
+
+        self.button_validar_message = QPushButton(self.frame_botoes_message)
+        self.button_validar_message.setObjectName(u"button_validar_message")
+        self.button_validar_message.setEnabled(False)
+        sizePolicy2.setHeightForWidth(self.button_validar_message.sizePolicy().hasHeightForWidth())
+        self.button_validar_message.setSizePolicy(sizePolicy2)
+        self.button_validar_message.setMinimumSize(QSize(150, 40))
+        self.button_validar_message.setFont(font1)
+        self.button_validar_message.setCursor(QCursor(Qt.PointingHandCursor))
+        self.button_validar_message.setStyleSheet(u"QPushButton{\n"
+"background-color: rgb(200, 208, 213);\n"
+"border: 1px solid;\n"
+"border-radius:5px\n"
+"}\n"
+"")
+
+        self.horizontalLayout_17.addWidget(self.button_validar_message)
+
+        self.button_cadastrar_message = QPushButton(self.frame_botoes_message)
+        self.button_cadastrar_message.setObjectName(u"button_cadastrar_message")
+        self.button_cadastrar_message.setEnabled(False)
+        sizePolicy2.setHeightForWidth(self.button_cadastrar_message.sizePolicy().hasHeightForWidth())
+        self.button_cadastrar_message.setSizePolicy(sizePolicy2)
+        self.button_cadastrar_message.setMinimumSize(QSize(150, 40))
+        self.button_cadastrar_message.setFont(font1)
+        self.button_cadastrar_message.setCursor(QCursor(Qt.PointingHandCursor))
+        self.button_cadastrar_message.setStyleSheet(u"QPushButton{\n"
+"background-color: rgb(200, 208, 213);\n"
+"border: 1px solid;\n"
+"border-radius:5px\n"
+"}\n"
+"")
+
+        self.horizontalLayout_17.addWidget(self.button_cadastrar_message)
+
+        self.spacer_frame_8 = QFrame(self.frame_botoes_message)
+        self.spacer_frame_8.setObjectName(u"spacer_frame_8")
+        self.spacer_frame_8.setFrameShape(QFrame.StyledPanel)
+        self.spacer_frame_8.setFrameShadow(QFrame.Raised)
+
+        self.horizontalLayout_17.addWidget(self.spacer_frame_8)
+
+
+        self.verticalLayout_24.addWidget(self.frame_botoes_message)
+
+        self.scrollArea_5.setWidget(self.scrollAreaWidgetContents_7)
+
+        self.horizontalLayout_14.addWidget(self.scrollArea_5)
+
+
+        self.horizontalLayout_13.addWidget(self.frame_cadastrar_mensagens)
+
+        self.frame_mensagens_cadastradas = QFrame(self.frame_main_page3)
+        self.frame_mensagens_cadastradas.setObjectName(u"frame_mensagens_cadastradas")
+        self.frame_mensagens_cadastradas.setStyleSheet(u"background-color: rgb(217, 225, 230);")
+        self.frame_mensagens_cadastradas.setFrameShape(QFrame.StyledPanel)
+        self.frame_mensagens_cadastradas.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_15 = QHBoxLayout(self.frame_mensagens_cadastradas)
+        self.horizontalLayout_15.setObjectName(u"horizontalLayout_15")
+        self.horizontalLayout_15.setContentsMargins(0, -1, 0, -1)
+        self.scrollArea_6 = QScrollArea(self.frame_mensagens_cadastradas)
+        self.scrollArea_6.setObjectName(u"scrollArea_6")
+        self.scrollArea_6.setWidgetResizable(True)
+        self.scrollAreaWidgetContents_6 = QWidget()
+        self.scrollAreaWidgetContents_6.setObjectName(u"scrollAreaWidgetContents_6")
+        self.scrollAreaWidgetContents_6.setGeometry(QRect(0, 0, 495, 440))
+        self.verticalLayout_23 = QVBoxLayout(self.scrollAreaWidgetContents_6)
+        self.verticalLayout_23.setObjectName(u"verticalLayout_23")
+        self.label_recipients_2 = QLabel(self.scrollAreaWidgetContents_6)
+        self.label_recipients_2.setObjectName(u"label_recipients_2")
+        self.label_recipients_2.setMinimumSize(QSize(0, 50))
+        self.label_recipients_2.setFont(font9)
+        self.label_recipients_2.setAlignment(Qt.AlignCenter)
+
+        self.verticalLayout_23.addWidget(self.label_recipients_2)
+
+        self.listWidget_message = QListWidget(self.scrollAreaWidgetContents_6)
+        self.listWidget_message.setObjectName(u"listWidget_message")
+        self.listWidget_message.setStyleSheet(u"background-color: rgb(227, 235, 240);")
+
+        self.verticalLayout_23.addWidget(self.listWidget_message)
+
+        self.button_excluir_message = QPushButton(self.scrollAreaWidgetContents_6)
+        self.button_excluir_message.setObjectName(u"button_excluir_message")
+        sizePolicy2.setHeightForWidth(self.button_excluir_message.sizePolicy().hasHeightForWidth())
+        self.button_excluir_message.setSizePolicy(sizePolicy2)
+        self.button_excluir_message.setMinimumSize(QSize(120, 40))
+        self.button_excluir_message.setFont(font1)
+        self.button_excluir_message.setCursor(QCursor(Qt.PointingHandCursor))
+        self.button_excluir_message.setStyleSheet(u"QPushButton{\n"
+"background-color: rgb(255, 75, 78);\n"
+"border: 1px solid;\n"
+"border-radius:5px\n"
+"}\n"
+"\n"
+"QPushButton:hover\n"
+"{\n"
+"background-color: rgb(212, 220, 226);\n"
+"color: rgb(0, 0, 0);\n"
+"}\n"
+"")
+
+        self.verticalLayout_23.addWidget(self.button_excluir_message, 0, Qt.AlignHCenter)
+
+        self.scrollArea_6.setWidget(self.scrollAreaWidgetContents_6)
+
+        self.horizontalLayout_15.addWidget(self.scrollArea_6)
+
+
+        self.horizontalLayout_13.addWidget(self.frame_mensagens_cadastradas)
+
 
         self.verticalLayout_12.addWidget(self.frame_main_page3)
 
@@ -914,7 +1136,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.pages.setCurrentIndex(1)
+        self.pages.setCurrentIndex(2)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -944,12 +1166,21 @@ class Ui_MainWindow(object):
         self.label_file_path_recipients.setText(QCoreApplication.translate("MainWindow", u"Selecione um arquivo", None))
         self.button_validar.setText(QCoreApplication.translate("MainWindow", u"Validar", None))
         self.button_cadastrar.setText(QCoreApplication.translate("MainWindow", u"Cadastrar", None))
-        self.label_recipients.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:16pt;\">Destinat\u00e1rios Encontrados:</span></p></body></html>", None))
+        self.label_recipients.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>Destinat\u00e1rios encontrados:</p></body></html>", None))
         ___qtablewidgetitem = self.table_recipients.horizontalHeaderItem(0)
         ___qtablewidgetitem.setText(QCoreApplication.translate("MainWindow", u"Nome", None));
         ___qtablewidgetitem1 = self.table_recipients.horizontalHeaderItem(1)
         ___qtablewidgetitem1.setText(QCoreApplication.translate("MainWindow", u"E-mail", None));
         self.label_title_3.setText(QCoreApplication.translate("MainWindow", u"Mensagens", None))
+        self.label_5.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:16pt;\">Cadastrar mensagens</span></p></body></html>", None))
+        self.label_6.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:14pt;\">Para realizar o cadastro de mensagens fa\u00e7a a importa\u00e7\u00e3o de um arquivo (.html), para orienta\u00e7\u00e3oes referente ao leiaute e formato do arquivo acesse o menu AJUDA na barra lateral.</span></p></body></html>", None))
+        self.button_search_message.setText(QCoreApplication.translate("MainWindow", u"Procurar", None))
+        self.label_file_path_message.setText(QCoreApplication.translate("MainWindow", u"Selecione um arquivo", None))
+        self.lineEdit_message_name.setPlaceholderText(QCoreApplication.translate("MainWindow", u"nome da mensagem", None))
+        self.button_validar_message.setText(QCoreApplication.translate("MainWindow", u"Validar", None))
+        self.button_cadastrar_message.setText(QCoreApplication.translate("MainWindow", u"Cadastrar", None))
+        self.label_recipients_2.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>Mensagens cadastradas:</p></body></html>", None))
+        self.button_excluir_message.setText(QCoreApplication.translate("MainWindow", u"Excluir", None))
         self.label_title_4.setText(QCoreApplication.translate("MainWindow", u"Configura\u00e7\u00f5es", None))
         self.label_title_5.setText(QCoreApplication.translate("MainWindow", u"Ajuda", None))
         self.label_title_6.setText(QCoreApplication.translate("MainWindow", u"Sobre", None))

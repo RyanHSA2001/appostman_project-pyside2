@@ -12,6 +12,7 @@ import re
 import sys
 import csv
 import styles
+import webbrowser
 
 from Custom_Widgets.Widgets import *
 
@@ -223,8 +224,13 @@ class MainWindow(QMainWindow, Ui_MainWindow, UtilityFunctions):
         horizontal_header.setSectionResizeMode(0, QHeaderView.Stretch)
         horizontal_header.setSectionResizeMode(1, QHeaderView.Stretch)
         self.table_recipients.verticalHeader().setVisible(False)
-
         self.show_recipients()
+
+        # Eventos tela de mensagens
+
+        self.button_search_message.clicked.connect(self.open_message_file_dialog)
+        self.button_validar_message.clicked.connect(self.validate_html)
+        self.button_cadastrar_message.clicked.connect(self.upload_message)
 
 
     def restore_or_maximize_window(self):
@@ -266,7 +272,7 @@ class MainWindow(QMainWindow, Ui_MainWindow, UtilityFunctions):
         if file_dialog.exec():
             file_name = file_dialog.selectedFiles()[0]
             self.label_file_path_recipients.setText(file_name)
-            self.able_disable_buttons(self.button_validar, True, styles.light_green_button)
+            self.able_disable_buttons(self.button_validar, True, styles.light_yellow_button)
             self.recipients_filename = file_name
         else:
             self.label_file_path_recipients.setText("Selecione um arquivo")
@@ -360,19 +366,36 @@ class MainWindow(QMainWindow, Ui_MainWindow, UtilityFunctions):
 
             self.label_recipients.setText(f"Destinatários Encontrados: {row}")
 
+    def open_message_file_dialog(self):
+        file_dialog = QFileDialog(self)
+        file_dialog.setNameFilter("HyperText Markup Language (*.html)")
+        file_dialog.setFileMode(QFileDialog.ExistingFile)
 
+        if file_dialog.exec():
+            file_name = file_dialog.selectedFiles()[0]
+            self.label_file_path_message.setText(file_name)
+            self.able_disable_buttons(self.button_validar_message, True, styles.light_yellow_button)
+            self.able_disable_buttons(self.lineEdit_message_name, True, styles.line_edit_style)
+            self.message_filename = file_name
+        else:
+            self.label_file_path_message.setText("Selecione um arquivo")
+            self.able_disable_buttons(self.button_validar_message, False, styles.disabled_gray_button)
+            self.able_disable_buttons(self.lineEdit_message_name, False, styles.line_edit_gray)
 
+        self.able_disable_buttons(self.button_cadastrar_message, False, styles.disabled_gray_button)
 
+    def validate_html(self):
+        webbrowser.open_new_tab(self.message_filename)
+        self.able_disable_buttons(self.button_cadastrar_message, True, styles.light_green_button)
 
-
-
-
-
-
-
-
-
-
+    def upload_message(self):
+        if not self.lineEdit_message_name.text():
+            self.open_message_box(QMessageBox.Warning, "Atenção!", "Por favor digite um nome para a mensagem", self)
+            return
+        print("vamo que vamo")
+        self.able_disable_buttons(self.button_cadastrar_message, False, styles.disabled_gray_button)
+        self.able_disable_buttons(self.button_validar_message, False, styles.disabled_gray_button)
+        self.able_disable_buttons(self.lineEdit_message_name, False, styles.line_edit_gray)
 
 
 if __name__ == "__main__":
