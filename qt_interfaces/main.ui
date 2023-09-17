@@ -867,7 +867,7 @@ color: rgb(0, 0, 0);
              </font>
             </property>
             <property name="currentIndex">
-             <number>2</number>
+             <number>3</number>
             </property>
             <widget class="QWidget" name="dashboard">
              <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -1508,12 +1508,6 @@ border-radius:5px
                  </property>
                  <item>
                   <widget class="QFrame" name="frame_cadastrar_mensagens">
-                   <property name="maximumSize">
-                    <size>
-                     <width>496</width>
-                     <height>458</height>
-                    </size>
-                   </property>
                    <property name="styleSheet">
                     <string notr="true">background-color: rgb(217, 225, 230);</string>
                    </property>
@@ -1993,6 +1987,15 @@ color: rgb(0, 0, 0);
             </widget>
             <widget class="QWidget" name="configurations">
              <layout class="QVBoxLayout" name="verticalLayout_14">
+              <property name="spacing">
+               <number>0</number>
+              </property>
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
               <item>
                <widget class="QFrame" name="frame_title_4">
                 <property name="font">
@@ -2051,6 +2054,9 @@ color: rgb(0, 0, 0);
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
+                <property name="styleSheet">
+                 <string notr="true"/>
+                </property>
                 <property name="frameShape">
                  <enum>QFrame::StyledPanel</enum>
                 </property>
@@ -2059,20 +2065,95 @@ color: rgb(0, 0, 0);
                 </property>
                 <layout class="QGridLayout" name="gridLayout_4">
                  <property name="leftMargin">
-                  <number>0</number>
+                  <number>9</number>
                  </property>
                  <property name="topMargin">
-                  <number>0</number>
+                  <number>9</number>
                  </property>
                  <property name="rightMargin">
-                  <number>0</number>
+                  <number>9</number>
                  </property>
                  <property name="bottomMargin">
-                  <number>0</number>
+                  <number>9</number>
                  </property>
                  <property name="spacing">
                   <number>0</number>
                  </property>
+                 <item row="0" column="0">
+                  <widget class="QFrame" name="frame">
+                   <property name="styleSheet">
+                    <string notr="true">background-color: rgb(227, 235, 240);</string>
+                   </property>
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QHBoxLayout" name="horizontalLayout_16">
+                    <property name="spacing">
+                     <number>0</number>
+                    </property>
+                    <property name="leftMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>0</number>
+                    </property>
+                    <item>
+                     <widget class="QTabWidget" name="tabWidget">
+                      <property name="styleSheet">
+                       <string notr="true">.QTabWidget::pane{
+    border:none
+}
+
+QTabBar::tab {
+	background-color: rgb(240, 240, 240);
+	font-family: 'Rockwell';
+    font-size: 14px; /* Tamanho da fonte */
+    min-width: 80px; /* Largura mínima dos botões das abas */
+    padding: 8px; /* Espaçamento interno */
+    border: 0.5px solid  rgb(232, 232, 232); 
+}
+
+QTabBar::tab::selected {
+	
+	background-color: rgb(255, 255, 255);
+}
+
+
+
+</string>
+                      </property>
+                      <property name="currentIndex">
+                       <number>0</number>
+                      </property>
+                      <widget class="QWidget" name="tab_5">
+                       <attribute name="title">
+                        <string>SMTP</string>
+                       </attribute>
+                      </widget>
+                      <widget class="QWidget" name="tab_7">
+                       <attribute name="title">
+                        <string>Envios</string>
+                       </attribute>
+                      </widget>
+                      <widget class="QWidget" name="tab_6">
+                       <attribute name="title">
+                        <string>IMAP</string>
+                       </attribute>
+                      </widget>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
                 </layout>
                </widget>
               </item>

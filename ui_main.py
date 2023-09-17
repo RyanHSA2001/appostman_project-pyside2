@@ -747,7 +747,6 @@ class Ui_MainWindow(object):
         self.horizontalLayout_13.setContentsMargins(0, -1, 0, -1)
         self.frame_cadastrar_mensagens = QFrame(self.frame_main_page3)
         self.frame_cadastrar_mensagens.setObjectName(u"frame_cadastrar_mensagens")
-        self.frame_cadastrar_mensagens.setMaximumSize(QSize(496, 458))
         self.frame_cadastrar_mensagens.setStyleSheet(u"background-color: rgb(217, 225, 230);")
         self.frame_cadastrar_mensagens.setFrameShape(QFrame.StyledPanel)
         self.frame_cadastrar_mensagens.setFrameShadow(QFrame.Raised)
@@ -976,7 +975,9 @@ class Ui_MainWindow(object):
         self.configurations = QWidget()
         self.configurations.setObjectName(u"configurations")
         self.verticalLayout_14 = QVBoxLayout(self.configurations)
+        self.verticalLayout_14.setSpacing(0)
         self.verticalLayout_14.setObjectName(u"verticalLayout_14")
+        self.verticalLayout_14.setContentsMargins(0, -1, 0, -1)
         self.frame_title_4 = QFrame(self.configurations)
         self.frame_title_4.setObjectName(u"frame_title_4")
         self.frame_title_4.setFont(font2)
@@ -1000,12 +1001,60 @@ class Ui_MainWindow(object):
         self.frame_main_page4.setObjectName(u"frame_main_page4")
         sizePolicy1.setHeightForWidth(self.frame_main_page4.sizePolicy().hasHeightForWidth())
         self.frame_main_page4.setSizePolicy(sizePolicy1)
+        self.frame_main_page4.setStyleSheet(u"")
         self.frame_main_page4.setFrameShape(QFrame.StyledPanel)
         self.frame_main_page4.setFrameShadow(QFrame.Raised)
         self.gridLayout_4 = QGridLayout(self.frame_main_page4)
         self.gridLayout_4.setSpacing(0)
         self.gridLayout_4.setObjectName(u"gridLayout_4")
-        self.gridLayout_4.setContentsMargins(0, 0, 0, 0)
+        self.gridLayout_4.setContentsMargins(9, 9, 9, 9)
+        self.frame = QFrame(self.frame_main_page4)
+        self.frame.setObjectName(u"frame")
+        self.frame.setStyleSheet(u"background-color: rgb(227, 235, 240);")
+        self.frame.setFrameShape(QFrame.StyledPanel)
+        self.frame.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_16 = QHBoxLayout(self.frame)
+        self.horizontalLayout_16.setSpacing(0)
+        self.horizontalLayout_16.setObjectName(u"horizontalLayout_16")
+        self.horizontalLayout_16.setContentsMargins(0, 0, 0, 0)
+        self.tabWidget = QTabWidget(self.frame)
+        self.tabWidget.setObjectName(u"tabWidget")
+        self.tabWidget.setStyleSheet(u".QTabWidget::pane{\n"
+"    border:none\n"
+"}\n"
+"\n"
+"QTabBar::tab {\n"
+"	background-color: rgb(240, 240, 240);\n"
+"	font-family: 'Rockwell';\n"
+"    font-size: 14px; /* Tamanho da fonte */\n"
+"    min-width: 80px; /* Largura m\u00ednima dos bot\u00f5es das abas */\n"
+"    padding: 8px; /* Espa\u00e7amento interno */\n"
+"    border: 0.5px solid  rgb(232, 232, 232); \n"
+"}\n"
+"\n"
+"QTabBar::tab::selected {\n"
+"	\n"
+"	background-color: rgb(255, 255, 255);\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"")
+        self.tab_5 = QWidget()
+        self.tab_5.setObjectName(u"tab_5")
+        self.tabWidget.addTab(self.tab_5, "")
+        self.tab_7 = QWidget()
+        self.tab_7.setObjectName(u"tab_7")
+        self.tabWidget.addTab(self.tab_7, "")
+        self.tab_6 = QWidget()
+        self.tab_6.setObjectName(u"tab_6")
+        self.tabWidget.addTab(self.tab_6, "")
+
+        self.horizontalLayout_16.addWidget(self.tabWidget)
+
+
+        self.gridLayout_4.addWidget(self.frame, 0, 0, 1, 1)
+
 
         self.verticalLayout_14.addWidget(self.frame_main_page4)
 
@@ -1137,7 +1186,8 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.pages.setCurrentIndex(2)
+        self.pages.setCurrentIndex(3)
+        self.tabWidget.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -1183,6 +1233,9 @@ class Ui_MainWindow(object):
         self.label_recipients_2.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>Mensagens cadastradas:</p></body></html>", None))
         self.button_excluir_message.setText(QCoreApplication.translate("MainWindow", u"Excluir", None))
         self.label_title_4.setText(QCoreApplication.translate("MainWindow", u"Configura\u00e7\u00f5es", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_5), QCoreApplication.translate("MainWindow", u"SMTP", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_7), QCoreApplication.translate("MainWindow", u"Envios", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_6), QCoreApplication.translate("MainWindow", u"IMAP", None))
         self.label_title_5.setText(QCoreApplication.translate("MainWindow", u"Ajuda", None))
         self.label_title_6.setText(QCoreApplication.translate("MainWindow", u"Sobre", None))
         self.label_copyright.setText(QCoreApplication.translate("MainWindow", u"Copyright Appostman Co.", None))

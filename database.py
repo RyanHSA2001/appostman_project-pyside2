@@ -202,7 +202,7 @@ class SystemDataBase:
     def select_message_byname(self, name):
         self.cursor.execute(
             """
-            SELECT message_id FROM messages WHERE name=?
+            SELECT path FROM messages WHERE name=?
             """, (name,))
 
         result = self.cursor.fetchone()
@@ -230,6 +230,13 @@ class SystemDataBase:
         last_id = self.cursor.lastrowid
 
         return last_id
+
+    def delete_message(self, name):
+        self.cursor.execute(
+            """
+            DELETE FROM messages WHERE name=?
+            """, (name,)
+        )
 
     def select_all_messages(self):
         self.cursor.execute(

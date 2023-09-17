@@ -239,7 +239,12 @@ class MainWindow(QMainWindow, Ui_MainWindow, UtilityFunctions):
         self.button_cadastrar_message.clicked.connect(self.upload_message)
         self.button_cadastrar_message.clicked.connect(self.refresh_message_list)
         self.show_messages()
+        self.button_excluir_message.clicked.connect(self.delete_item)
+        self.listWidget_message.itemDoubleClicked.connect(self.validate_html_by_double_click)
 
+        # Eventos tela de configurações
+
+        self.tabWidget.tabBar().setCursor(QtCore.Qt.PointingHandCursor)
 
     def restore_or_maximize_window(self):
         if self.window_size == 0:
@@ -374,6 +379,8 @@ class MainWindow(QMainWindow, Ui_MainWindow, UtilityFunctions):
 
             self.label_recipients.setText(f"Destinatários Encontrados: {row}")
 
+    # Funções tela de mensagens
+
     def open_message_file_dialog(self):
         file_dialog = QFileDialog(self)
         file_dialog.setNameFilter("HyperText Markup Language (*.html)")
@@ -397,6 +404,18 @@ class MainWindow(QMainWindow, Ui_MainWindow, UtilityFunctions):
 
     def validate_html(self):
         webbrowser.open_new_tab(self.message_original_filepath)
+
+    def validate_html_by_double_click(self, item):
+        message_name = item.text()
+        divided_message_name = message_name.split(" - ", 1)
+        message_name = divided_message_name[1]
+        result = False
+
+        with SystemDataBase(self.logged_user_db) as db:
+            result = db.select_message_byname(message_name)
+
+        if result:
+            webbrowser.open_new_tab(result)
 
     def show_messages(self):
         with SystemDataBase(self.logged_user_db) as db:
@@ -433,11 +452,26 @@ class MainWindow(QMainWindow, Ui_MainWindow, UtilityFunctions):
                         self.message_id = db.insert_message(self.message_new_filepath, message_name)
                         self.open_message_box(QMessageBox.Information, "Sucesso!", "Mensagem cadastrada com sucesso",
                                               self)
-                        return
+                        self.lineEdit_message_name.setText("")
+                        self.label_file_path_message.setText("Selecione um arquivo")
+                        self.able_disable_buttons(self.button_cadastrar_message, False, styles.disabled_gray_button)
+                        self.able_disable_buttons(self.button_validar_message, False, styles.disabled_gray_button)
+                        self.able_disable_buttons(self.lineEdit_message_name, False, styles.line_edit_gray)
 
+                        return
                     return
 
-            self.open_message_box(QMessageBox.Warning, "Erro!", "Esse nome já está sendo utilizado", self)
+                self.copy_to_messages_directory(self.message_original_filepath)
+                self.message_id = db.insert_message(self.message_new_filepath, message_name)
+                self.open_message_box(QMessageBox.Information, "Sucesso!", "Mensagem cadastrada com sucesso",
+                                      self)
+                self.lineEdit_message_name.setText("")
+                self.label_file_path_message.setText("Selecione um arquivo")
+                self.able_disable_buttons(self.button_cadastrar_message, False, styles.disabled_gray_button)
+                self.able_disable_buttons(self.button_validar_message, False, styles.disabled_gray_button)
+                self.able_disable_buttons(self.lineEdit_message_name, False, styles.line_edit_gray)
+                return
+            self.open_message_box(QMessageBox.Warning, "Erro", "Nome já utilizado", self)
             return
 
 
@@ -450,6 +484,19 @@ class MainWindow(QMainWindow, Ui_MainWindow, UtilityFunctions):
         self.listWidget_message.clear()
         self.show_messages()
 
+    def delete_item(self):
+        item = self.listWidget_message.currentItem()
+
+        if item:
+            message_name = item.text()
+            divided_message_name = message_name.split(" - ", 1)
+            message_name = divided_message_name[1]
+
+            with SystemDataBase(self.logged_user_db) as db:
+                db.delete_message(message_name)
+
+            self.refresh_message_list()
+            return
 
 
 
