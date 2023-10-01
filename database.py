@@ -193,6 +193,21 @@ class SystemDataBase:
             );
             """)
 
+    def create_table_campaigns(self):
+        self.cursor.execute(
+            """
+            CREATE TABLE IF NOT EXISTS 'campaigns'(
+            'campaign_id' INTEGER PRIMARY KEY AUTOINCREMENT,
+            'week_day' TEXT NOT NULL,
+            'time' TEXT NOT NULL,
+            'sex' TEXT NOT NULL,
+            'age' INTEGER,
+            'country_code' TEXT,
+            'message_id' INTEGER NOT NULL,
+            FOREIGN KEY ('message_id') REFERENCES 'messages'('message_id') 
+            );
+            """)
+
     def insert_recipient(self, name, email, age, sex, country_code):
         self.cursor.execute(
             """
@@ -260,3 +275,4 @@ class SystemDataBase:
         self.create_table_recipients()
         self.create_table_log_table()
         self.create_table_messages()
+        self.create_table_campaigns()
