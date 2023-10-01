@@ -2,6 +2,7 @@ from ui_login import Ui_Login
 from ui_main import Ui_MainWindow
 
 from database import LoginDataBase, SystemDataBase
+import protocols
 
 from PySide2.QtWidgets import QWidget, QMainWindow, QMessageBox, QApplication
 from PySide2.QtCore import QEasingCurve, QPropertyAnimation, Qt
@@ -245,6 +246,10 @@ class MainWindow(QMainWindow, Ui_MainWindow, UtilityFunctions):
         # Eventos tela de configurações
 
         self.tabWidget.tabBar().setCursor(QtCore.Qt.PointingHandCursor)
+        self.button_smtp_validate.clicked.connect(self.validate_smtp)
+        self.button_imap_validate.clicked.connect(self.validate_imap)
+        self.preset_protocols_configurations()
+
 
     def restore_or_maximize_window(self):
         if self.window_size == 0:
@@ -498,6 +503,52 @@ class MainWindow(QMainWindow, Ui_MainWindow, UtilityFunctions):
             self.refresh_message_list()
             return
 
+    # Funções tela de configurações
+
+    def validate_smtp(self):
+        self.servidor_smtp = self.lineEdit_smtp_servidor.text()
+        self.porta_smtp = self.lineEdit_smtp_porta.text()
+        self.email_smtp = self.lineEdit_smtp_email.text()
+        self.senha_smtp = self.lineEdit_smtp_senha.text()
+
+
+        if protocols.auth_smtp(self.servidor_smtp, self.porta_smtp, self.email_smtp, self.senha_smtp):
+            self.open_message_box(QMessageBox.Information, "Sucesso", "Conexão realizada com sucesso!", self)
+            with SystemDataBase(self.logged_user_db) as db:
+                db.insert_smtp(self.servidor_smtp, self.porta_smtp, self.email_smtp, self.senha_smtp)
+            return
+        self.open_message_box(QMessageBox.Information, "Erro", "Erro na conexão", self)
+
+    def validate_imap(self):
+        self.servidor_imap = self.lineEdit_imap_servidor.text()
+        self.porta_imap = self.lineEdit_imap_porta.text()
+        self.email_imap = self.lineEdit_imap_email.text()
+        self.senha_imap = self.lineEdit_imap_senha.text()
+
+        if protocols.auth_imap(self.servidor_imap, self.porta_imap, self.email_imap, self.senha_imap):
+            self.open_message_box(QMessageBox.Information, "Sucesso", "Conexão realizada com sucesso!", self)
+            with SystemDataBase(self.logged_user_db) as db:
+                db.insert_imap(self.servidor_imap, self.porta_imap, self.email_imap, self.senha_imap)
+            return
+        self.open_message_box(QMessageBox.Information, "Erro", "Erro na conexão", self)
+
+    def preset_protocols_configurations(self):
+        with SystemDataBase(self.logged_user_db) as db:
+            self.smtp = db.select_smtp()
+            self.imap = db.select_imap()
+
+        if self.smtp:
+            # pre-setando dados smtp
+            self.lineEdit_smtp_servidor.setText(self.smtp[0])
+            self.lineEdit_smtp_porta.setText(self.smtp[1])
+            self.lineEdit_smtp_email.setText(self.smtp[2])
+            self.lineEdit_smtp_senha.setText(self.smtp[3])
+        if self.imap:
+            # pre-setando dados imap
+            self.lineEdit_imap_servidor.setText(self.imap[0])
+            self.lineEdit_imap_porta.setText(self.imap[1])
+            self.lineEdit_imap_email.setText(self.imap[2])
+            self.lineEdit_imap_senha.setText(self.imap[3])
 
 
 if __name__ == "__main__":

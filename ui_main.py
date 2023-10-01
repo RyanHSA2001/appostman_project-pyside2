@@ -17,14 +17,13 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1027, 626)
+        MainWindow.resize(1080, 626)
         MainWindow.setMinimumSize(QSize(1027, 626))
         icon = QIcon()
         icon.addFile(u"resources/mail.png", QSize(), QIcon.Normal, QIcon.Off)
         MainWindow.setWindowIcon(icon)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
-        self.centralwidget.setMinimumSize(QSize(953, 626))
         self.centralwidget.setStyleSheet(u"QWidget\n"
 "{\n"
 "background-color: rgb(233, 242, 249);\n"
@@ -762,7 +761,7 @@ class Ui_MainWindow(object):
         self.scrollArea_5.setWidgetResizable(True)
         self.scrollAreaWidgetContents_7 = QWidget()
         self.scrollAreaWidgetContents_7.setObjectName(u"scrollAreaWidgetContents_7")
-        self.scrollAreaWidgetContents_7.setGeometry(QRect(0, 0, 374, 353))
+        self.scrollAreaWidgetContents_7.setGeometry(QRect(0, 0, 522, 458))
         self.verticalLayout_24 = QVBoxLayout(self.scrollAreaWidgetContents_7)
         self.verticalLayout_24.setSpacing(6)
         self.verticalLayout_24.setObjectName(u"verticalLayout_24")
@@ -921,7 +920,7 @@ class Ui_MainWindow(object):
         self.scrollArea_6.setWidgetResizable(True)
         self.scrollAreaWidgetContents_6 = QWidget()
         self.scrollAreaWidgetContents_6.setObjectName(u"scrollAreaWidgetContents_6")
-        self.scrollAreaWidgetContents_6.setGeometry(QRect(0, 0, 253, 189))
+        self.scrollAreaWidgetContents_6.setGeometry(QRect(0, 0, 522, 440))
         self.verticalLayout_23 = QVBoxLayout(self.scrollAreaWidgetContents_6)
         self.verticalLayout_23.setObjectName(u"verticalLayout_23")
         self.label_recipients_2 = QLabel(self.scrollAreaWidgetContents_6)
@@ -1016,7 +1015,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_16 = QHBoxLayout(self.frame)
         self.horizontalLayout_16.setSpacing(0)
         self.horizontalLayout_16.setObjectName(u"horizontalLayout_16")
-        self.horizontalLayout_16.setContentsMargins(20, 0, 20, 0)
+        self.horizontalLayout_16.setContentsMargins(0, 0, 0, 0)
         self.tabWidget = QTabWidget(self.frame)
         self.tabWidget.setObjectName(u"tabWidget")
         self.tabWidget.setStyleSheet(u".QTabWidget::pane{\n"
@@ -1182,6 +1181,7 @@ class Ui_MainWindow(object):
 "background-color: rgb(236, 244, 248);\n"
 "}")
         self.lineEdit_smtp_senha.setFrame(False)
+        self.lineEdit_smtp_senha.setEchoMode(QLineEdit.Password)
         self.lineEdit_smtp_senha.setAlignment(Qt.AlignCenter)
 
         self.horizontalLayout_19.addWidget(self.lineEdit_smtp_senha, 0, Qt.AlignTop)
@@ -1340,13 +1340,13 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_21.addWidget(self.lineEdit_imap_email, 0, Qt.AlignTop)
 
-        self.lineEdit_smtp_senha_2 = QLineEdit(self.frame_7)
-        self.lineEdit_smtp_senha_2.setObjectName(u"lineEdit_smtp_senha_2")
-        self.lineEdit_smtp_senha_2.setEnabled(True)
-        self.lineEdit_smtp_senha_2.setMinimumSize(QSize(250, 30))
-        self.lineEdit_smtp_senha_2.setMaximumSize(QSize(250, 30))
-        self.lineEdit_smtp_senha_2.setFont(font10)
-        self.lineEdit_smtp_senha_2.setStyleSheet(u"QLineEdit\n"
+        self.lineEdit_imap_senha = QLineEdit(self.frame_7)
+        self.lineEdit_imap_senha.setObjectName(u"lineEdit_imap_senha")
+        self.lineEdit_imap_senha.setEnabled(True)
+        self.lineEdit_imap_senha.setMinimumSize(QSize(250, 30))
+        self.lineEdit_imap_senha.setMaximumSize(QSize(250, 30))
+        self.lineEdit_imap_senha.setFont(font10)
+        self.lineEdit_imap_senha.setStyleSheet(u"QLineEdit\n"
 "{\n"
 "background-color: rgb(255, 255, 255);\n"
 "border: 1px solid;\n"
@@ -1357,10 +1357,11 @@ class Ui_MainWindow(object):
 "{\n"
 "background-color: rgb(236, 244, 248);\n"
 "}")
-        self.lineEdit_smtp_senha_2.setFrame(False)
-        self.lineEdit_smtp_senha_2.setAlignment(Qt.AlignCenter)
+        self.lineEdit_imap_senha.setFrame(False)
+        self.lineEdit_imap_senha.setEchoMode(QLineEdit.Password)
+        self.lineEdit_imap_senha.setAlignment(Qt.AlignCenter)
 
-        self.horizontalLayout_21.addWidget(self.lineEdit_smtp_senha_2, 0, Qt.AlignTop)
+        self.horizontalLayout_21.addWidget(self.lineEdit_imap_senha, 0, Qt.AlignTop)
 
         self.horizontalSpacer_8 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
@@ -1396,13 +1397,13 @@ class Ui_MainWindow(object):
         self.tab_envios.setObjectName(u"tab_envios")
         self.horizontalLayout_22 = QHBoxLayout(self.tab_envios)
         self.horizontalLayout_22.setObjectName(u"horizontalLayout_22")
-        self.horizontalLayout_22.setContentsMargins(9, 0, -1, 9)
+        self.horizontalLayout_22.setContentsMargins(9, 0, 0, 9)
         self.scrollArea_3 = QScrollArea(self.tab_envios)
         self.scrollArea_3.setObjectName(u"scrollArea_3")
         self.scrollArea_3.setWidgetResizable(True)
         self.scrollAreaWidgetContents_3 = QWidget()
         self.scrollAreaWidgetContents_3.setObjectName(u"scrollAreaWidgetContents_3")
-        self.scrollAreaWidgetContents_3.setGeometry(QRect(0, 0, 468, 424))
+        self.scrollAreaWidgetContents_3.setGeometry(QRect(0, 0, 518, 424))
         self.verticalLayout_30 = QVBoxLayout(self.scrollAreaWidgetContents_3)
         self.verticalLayout_30.setSpacing(0)
         self.verticalLayout_30.setObjectName(u"verticalLayout_30")
@@ -1450,11 +1451,7 @@ class Ui_MainWindow(object):
         self.label_12.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
         self.label_12.setWordWrap(True)
 
-        self.horizontalLayout_23.addWidget(self.label_12, 0, Qt.AlignVCenter)
-
-        self.horizontalSpacer_10 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.horizontalLayout_23.addItem(self.horizontalSpacer_10)
+        self.horizontalLayout_23.addWidget(self.label_12, 0, Qt.AlignLeft|Qt.AlignVCenter)
 
         self.comboBox_dia = QComboBox(self.frame_13)
         self.comboBox_dia.addItem("")
@@ -1477,10 +1474,14 @@ class Ui_MainWindow(object):
 "    selection-color: #333333;\n"
 "    font-size: 14px;\n"
 "}\n"
+"\n"
+"QComboBox QAbstractItemView {\n"
+"	background-color: rgb(255, 255, 255);\n"
+"}\n"
 "")
         self.comboBox_dia.setFrame(True)
 
-        self.horizontalLayout_23.addWidget(self.comboBox_dia, 0, Qt.AlignLeft)
+        self.horizontalLayout_23.addWidget(self.comboBox_dia, 0, Qt.AlignRight)
 
 
         self.verticalLayout_32.addWidget(self.frame_13)
@@ -1502,11 +1503,7 @@ class Ui_MainWindow(object):
         self.label_13.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
         self.label_13.setWordWrap(True)
 
-        self.horizontalLayout_24.addWidget(self.label_13)
-
-        self.horizontalSpacer_11 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.horizontalLayout_24.addItem(self.horizontalSpacer_11)
+        self.horizontalLayout_24.addWidget(self.label_13, 0, Qt.AlignLeft)
 
         self.timeEdit_horario = QTimeEdit(self.frame_16)
         self.timeEdit_horario.setObjectName(u"timeEdit_horario")
@@ -1530,7 +1527,7 @@ class Ui_MainWindow(object):
 "\n"
 "")
 
-        self.horizontalLayout_24.addWidget(self.timeEdit_horario, 0, Qt.AlignLeft)
+        self.horizontalLayout_24.addWidget(self.timeEdit_horario, 0, Qt.AlignRight)
 
 
         self.verticalLayout_32.addWidget(self.frame_16)
@@ -1551,11 +1548,7 @@ class Ui_MainWindow(object):
         self.label_14.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
         self.label_14.setWordWrap(True)
 
-        self.horizontalLayout_25.addWidget(self.label_14, 0, Qt.AlignVCenter)
-
-        self.horizontalSpacer_12 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.horizontalLayout_25.addItem(self.horizontalSpacer_12)
+        self.horizontalLayout_25.addWidget(self.label_14, 0, Qt.AlignLeft|Qt.AlignVCenter)
 
         self.comboBox_genero = QComboBox(self.frame_14)
         self.comboBox_genero.addItem("")
@@ -1572,9 +1565,14 @@ class Ui_MainWindow(object):
 "    selection-color: #333333;\n"
 "    font-size: 14px;\n"
 "}\n"
+"\n"
+"QComboBox QAbstractItemView {\n"
+"	background-color: rgb(255, 255, 255);\n"
+"}\n"
+"\n"
 "")
 
-        self.horizontalLayout_25.addWidget(self.comboBox_genero, 0, Qt.AlignLeft)
+        self.horizontalLayout_25.addWidget(self.comboBox_genero, 0, Qt.AlignRight)
 
 
         self.verticalLayout_32.addWidget(self.frame_14)
@@ -1593,13 +1591,17 @@ class Ui_MainWindow(object):
         self.checkBox_idade.setFont(font1)
         self.checkBox_idade.setCursor(QCursor(Qt.PointingHandCursor))
 
-        self.horizontalLayout_26.addWidget(self.checkBox_idade)
+        self.horizontalLayout_26.addWidget(self.checkBox_idade, 0, Qt.AlignLeft)
 
-        self.horizontalSpacer_9 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.horizontalLayout_26.addItem(self.horizontalSpacer_9)
-
-        self.spinBox_idadeInicial = QSpinBox(self.frame_15)
+        self.frame_18 = QFrame(self.frame_15)
+        self.frame_18.setObjectName(u"frame_18")
+        self.frame_18.setFrameShape(QFrame.StyledPanel)
+        self.frame_18.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_28 = QHBoxLayout(self.frame_18)
+        self.horizontalLayout_28.setSpacing(0)
+        self.horizontalLayout_28.setObjectName(u"horizontalLayout_28")
+        self.horizontalLayout_28.setContentsMargins(0, 0, 0, 0)
+        self.spinBox_idadeInicial = QSpinBox(self.frame_18)
         self.spinBox_idadeInicial.setObjectName(u"spinBox_idadeInicial")
         self.spinBox_idadeInicial.setEnabled(False)
         self.spinBox_idadeInicial.setCursor(QCursor(Qt.PointingHandCursor))
@@ -1619,9 +1621,9 @@ class Ui_MainWindow(object):
 "\n"
 "")
 
-        self.horizontalLayout_26.addWidget(self.spinBox_idadeInicial, 0, Qt.AlignLeft)
+        self.horizontalLayout_28.addWidget(self.spinBox_idadeInicial)
 
-        self.label_16 = QLabel(self.frame_15)
+        self.label_16 = QLabel(self.frame_18)
         self.label_16.setObjectName(u"label_16")
         self.label_16.setEnabled(False)
         self.label_16.setMinimumSize(QSize(35, 0))
@@ -1629,9 +1631,9 @@ class Ui_MainWindow(object):
         self.label_16.setAlignment(Qt.AlignHCenter|Qt.AlignTop)
         self.label_16.setWordWrap(True)
 
-        self.horizontalLayout_26.addWidget(self.label_16, 0, Qt.AlignVCenter)
+        self.horizontalLayout_28.addWidget(self.label_16, 0, Qt.AlignVCenter)
 
-        self.spinBox_idadeFinal = QSpinBox(self.frame_15)
+        self.spinBox_idadeFinal = QSpinBox(self.frame_18)
         self.spinBox_idadeFinal.setObjectName(u"spinBox_idadeFinal")
         self.spinBox_idadeFinal.setEnabled(False)
         self.spinBox_idadeFinal.setCursor(QCursor(Qt.PointingHandCursor))
@@ -1651,7 +1653,10 @@ class Ui_MainWindow(object):
 "\n"
 "")
 
-        self.horizontalLayout_26.addWidget(self.spinBox_idadeFinal, 0, Qt.AlignLeft)
+        self.horizontalLayout_28.addWidget(self.spinBox_idadeFinal)
+
+
+        self.horizontalLayout_26.addWidget(self.frame_18)
 
 
         self.verticalLayout_32.addWidget(self.frame_15)
@@ -1670,7 +1675,7 @@ class Ui_MainWindow(object):
         self.checkBox_pais.setFont(font1)
         self.checkBox_pais.setCursor(QCursor(Qt.PointingHandCursor))
 
-        self.horizontalLayout_27.addWidget(self.checkBox_pais)
+        self.horizontalLayout_27.addWidget(self.checkBox_pais, 0, Qt.AlignLeft)
 
         self.lineEdit_codigoPais = QLineEdit(self.frame_17)
         self.lineEdit_codigoPais.setObjectName(u"lineEdit_codigoPais")
@@ -1682,7 +1687,7 @@ class Ui_MainWindow(object):
         self.lineEdit_codigoPais.setStyleSheet(u"background-color: rgb(254, 254, 254);")
         self.lineEdit_codigoPais.setAlignment(Qt.AlignCenter)
 
-        self.horizontalLayout_27.addWidget(self.lineEdit_codigoPais)
+        self.horizontalLayout_27.addWidget(self.lineEdit_codigoPais, 0, Qt.AlignRight)
 
 
         self.verticalLayout_32.addWidget(self.frame_17)
@@ -1725,7 +1730,7 @@ class Ui_MainWindow(object):
         self.scrollArea_7.setWidgetResizable(True)
         self.scrollAreaWidgetContents_11 = QWidget()
         self.scrollAreaWidgetContents_11.setObjectName(u"scrollAreaWidgetContents_11")
-        self.scrollAreaWidgetContents_11.setGeometry(QRect(0, 0, 465, 424))
+        self.scrollAreaWidgetContents_11.setGeometry(QRect(0, 0, 517, 424))
         self.verticalLayout_29 = QVBoxLayout(self.scrollAreaWidgetContents_11)
         self.verticalLayout_29.setObjectName(u"verticalLayout_29")
         self.label_recipients_6 = QLabel(self.scrollAreaWidgetContents_11)
@@ -1967,7 +1972,7 @@ class Ui_MainWindow(object):
         self.lineEdit_imap_servidor.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Servidor", None))
         self.lineEdit_imap_porta.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Porta", None))
         self.lineEdit_imap_email.setPlaceholderText(QCoreApplication.translate("MainWindow", u"E-mail", None))
-        self.lineEdit_smtp_senha_2.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Senha", None))
+        self.lineEdit_imap_senha.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Senha", None))
         self.button_imap_validate.setText(QCoreApplication.translate("MainWindow", u"Validar", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_imap), QCoreApplication.translate("MainWindow", u"IMAP", None))
         self.label_11.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:14pt;\">Adicionar campanha</span></p></body></html>", None))

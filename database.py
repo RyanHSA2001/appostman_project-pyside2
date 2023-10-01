@@ -208,6 +208,42 @@ class SystemDataBase:
             );
             """)
 
+    def create_table_smtp(self):
+        self.cursor.execute(
+            """
+            CREATE TABLE IF NOT EXISTS 'smtp'(
+            'smtp_id' INTEGER PRIMARY KEY AUTOINCREMENT,
+            'server' TEXT NOT NULL,
+            'port' TEXT NOT NULL,
+            'email' TEXT NOT NULL,
+            'password' TEXT NOT NULL
+            )
+            """)
+
+    def create_table_imap(self):
+        self.cursor.execute(
+            """
+            CREATE TABLE IF NOT EXISTS 'imap'(
+            'imap_id' INTEGER PRIMARY KEY AUTOINCREMENT,
+            'server' TEXT NOT NULL,
+            'port' TEXT NOT NULL,
+            'email' TEXT NOT NULL,
+            'password' TEXT NOT NULL
+            )
+            """)
+
+    def insert_smtp(self, server, port, email, password):
+        self.cursor.execute(
+            """
+            REPLACE INTO smtp(server, port, email, password) VALUES(?, ?, ?, ?)
+            """, (server, port, email, password))
+
+    def insert_imap(self, server, port, email, password):
+        self.cursor.execute(
+            """
+            REPLACE INTO imap(server, port, email, password) VALUES(?, ?, ?, ?)
+            """, (server, port, email, password))
+
     def insert_recipient(self, name, email, age, sex, country_code):
         self.cursor.execute(
             """
@@ -261,8 +297,6 @@ class SystemDataBase:
         result = self.cursor.fetchall()
         return result
 
-
-
     def select_recipients(self):
         self.cursor.execute(
             """
@@ -270,9 +304,29 @@ class SystemDataBase:
             """)
         result = self.cursor.fetchall()
         return result
+
+    def select_smtp(self):
+        self.cursor.execute(
+            """
+            SELECT server, port, email, password FROM smtp;
+            """)
+        result = self.cursor.fetchone()
+        return result
+
+    def select_imap(self):
+        self.cursor.execute(
+            """
+            SELECT server, port, email, password FROM imap;
+            """)
+        result = self.cursor.fetchone()
+        return result
+
+
     def setup_database(self):
         self.create_table_users()
         self.create_table_recipients()
         self.create_table_log_table()
         self.create_table_messages()
         self.create_table_campaigns()
+        self.create_table_smtp()
+        self.create_table_imap()
