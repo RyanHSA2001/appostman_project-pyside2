@@ -17,7 +17,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1080, 626)
+        MainWindow.resize(1080, 646)
         MainWindow.setMinimumSize(QSize(1027, 626))
         icon = QIcon()
         icon.addFile(u"resources/mail.png", QSize(), QIcon.Normal, QIcon.Off)
@@ -524,7 +524,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 374, 317))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 522, 478))
         self.verticalLayout_20 = QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout_20.setObjectName(u"verticalLayout_20")
         self.label = QLabel(self.scrollAreaWidgetContents)
@@ -663,7 +663,7 @@ class Ui_MainWindow(object):
         self.scrollArea_2.setWidgetResizable(True)
         self.scrollAreaWidgetContents_2 = QWidget()
         self.scrollAreaWidgetContents_2.setObjectName(u"scrollAreaWidgetContents_2")
-        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 279, 143))
+        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 522, 460))
         self.verticalLayout_21 = QVBoxLayout(self.scrollAreaWidgetContents_2)
         self.verticalLayout_21.setObjectName(u"verticalLayout_21")
         self.label_recipients = QLabel(self.scrollAreaWidgetContents_2)
@@ -761,7 +761,7 @@ class Ui_MainWindow(object):
         self.scrollArea_5.setWidgetResizable(True)
         self.scrollAreaWidgetContents_7 = QWidget()
         self.scrollAreaWidgetContents_7.setObjectName(u"scrollAreaWidgetContents_7")
-        self.scrollAreaWidgetContents_7.setGeometry(QRect(0, 0, 522, 458))
+        self.scrollAreaWidgetContents_7.setGeometry(QRect(0, 0, 522, 478))
         self.verticalLayout_24 = QVBoxLayout(self.scrollAreaWidgetContents_7)
         self.verticalLayout_24.setSpacing(6)
         self.verticalLayout_24.setObjectName(u"verticalLayout_24")
@@ -920,7 +920,7 @@ class Ui_MainWindow(object):
         self.scrollArea_6.setWidgetResizable(True)
         self.scrollAreaWidgetContents_6 = QWidget()
         self.scrollAreaWidgetContents_6.setObjectName(u"scrollAreaWidgetContents_6")
-        self.scrollAreaWidgetContents_6.setGeometry(QRect(0, 0, 522, 440))
+        self.scrollAreaWidgetContents_6.setGeometry(QRect(0, 0, 522, 460))
         self.verticalLayout_23 = QVBoxLayout(self.scrollAreaWidgetContents_6)
         self.verticalLayout_23.setObjectName(u"verticalLayout_23")
         self.label_recipients_2 = QLabel(self.scrollAreaWidgetContents_6)
@@ -1397,25 +1397,17 @@ class Ui_MainWindow(object):
         self.tab_envios.setObjectName(u"tab_envios")
         self.horizontalLayout_22 = QHBoxLayout(self.tab_envios)
         self.horizontalLayout_22.setObjectName(u"horizontalLayout_22")
-        self.horizontalLayout_22.setContentsMargins(9, 0, 0, 9)
+        self.horizontalLayout_22.setContentsMargins(9, 9, 0, 9)
         self.scrollArea_3 = QScrollArea(self.tab_envios)
         self.scrollArea_3.setObjectName(u"scrollArea_3")
         self.scrollArea_3.setWidgetResizable(True)
         self.scrollAreaWidgetContents_3 = QWidget()
         self.scrollAreaWidgetContents_3.setObjectName(u"scrollAreaWidgetContents_3")
-        self.scrollAreaWidgetContents_3.setGeometry(QRect(0, 0, 518, 424))
+        self.scrollAreaWidgetContents_3.setGeometry(QRect(0, 0, 518, 435))
         self.verticalLayout_30 = QVBoxLayout(self.scrollAreaWidgetContents_3)
         self.verticalLayout_30.setSpacing(0)
         self.verticalLayout_30.setObjectName(u"verticalLayout_30")
         self.verticalLayout_30.setContentsMargins(0, 0, 0, 0)
-        self.label_11 = QLabel(self.scrollAreaWidgetContents_3)
-        self.label_11.setObjectName(u"label_11")
-        self.label_11.setMaximumSize(QSize(16777215, 50))
-        self.label_11.setFont(font6)
-        self.label_11.setAlignment(Qt.AlignCenter)
-
-        self.verticalLayout_30.addWidget(self.label_11)
-
         self.frame_11 = QFrame(self.scrollAreaWidgetContents_3)
         self.frame_11.setObjectName(u"frame_11")
         self.frame_11.setFrameShape(QFrame.StyledPanel)
@@ -1432,12 +1424,60 @@ class Ui_MainWindow(object):
 "}")
         self.frame_12.setFrameShape(QFrame.StyledPanel)
         self.frame_12.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_32 = QVBoxLayout(self.frame_12)
-        self.verticalLayout_32.setObjectName(u"verticalLayout_32")
-        self.verticalLayout_32.setContentsMargins(9, -1, -1, -1)
+        self.verticalLayout_26 = QVBoxLayout(self.frame_12)
+        self.verticalLayout_26.setSpacing(5)
+        self.verticalLayout_26.setObjectName(u"verticalLayout_26")
+        self.verticalLayout_26.setContentsMargins(-1, 5, -1, 5)
+        self.frame_20 = QFrame(self.frame_12)
+        self.frame_20.setObjectName(u"frame_20")
+        self.frame_20.setMaximumSize(QSize(16777215, 40))
+        self.frame_20.setStyleSheet(u"background-color: rgb(217, 225, 230);")
+        self.frame_20.setFrameShape(QFrame.Box)
+        self.frame_20.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_30 = QHBoxLayout(self.frame_20)
+        self.horizontalLayout_30.setSpacing(0)
+        self.horizontalLayout_30.setObjectName(u"horizontalLayout_30")
+        self.horizontalLayout_30.setContentsMargins(50, 0, 50, 0)
+        self.label_16 = QLabel(self.frame_20)
+        self.label_16.setObjectName(u"label_16")
+        self.label_16.setMinimumSize(QSize(50, 0))
+        self.label_16.setMaximumSize(QSize(80, 16777215))
+        self.label_16.setFont(font7)
+        self.label_16.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
+        self.label_16.setWordWrap(True)
+
+        self.horizontalLayout_30.addWidget(self.label_16, 0, Qt.AlignLeft|Qt.AlignVCenter)
+
+        self.frame_21 = QFrame(self.frame_20)
+        self.frame_21.setObjectName(u"frame_21")
+        self.frame_21.setMaximumSize(QSize(160, 16777215))
+        self.frame_21.setFrameShape(QFrame.StyledPanel)
+        self.frame_21.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_31 = QHBoxLayout(self.frame_21)
+        self.horizontalLayout_31.setSpacing(0)
+        self.horizontalLayout_31.setObjectName(u"horizontalLayout_31")
+        self.horizontalLayout_31.setContentsMargins(-1, 0, 0, 0)
+        self.radioButton_inicial = QRadioButton(self.frame_21)
+        self.radioButton_inicial.setObjectName(u"radioButton_inicial")
+        self.radioButton_inicial.setFont(font4)
+
+        self.horizontalLayout_31.addWidget(self.radioButton_inicial)
+
+        self.radioButton_resposta = QRadioButton(self.frame_21)
+        self.radioButton_resposta.setObjectName(u"radioButton_resposta")
+        self.radioButton_resposta.setFont(font4)
+
+        self.horizontalLayout_31.addWidget(self.radioButton_resposta, 0, Qt.AlignRight)
+
+
+        self.horizontalLayout_30.addWidget(self.frame_21)
+
+
+        self.verticalLayout_26.addWidget(self.frame_20)
+
         self.frame_13 = QFrame(self.frame_12)
         self.frame_13.setObjectName(u"frame_13")
-        self.frame_13.setMaximumSize(QSize(16777215, 50))
+        self.frame_13.setMaximumSize(QSize(16777215, 40))
         self.frame_13.setStyleSheet(u"background-color: rgb(217, 225, 230);")
         self.frame_13.setFrameShape(QFrame.Box)
         self.frame_13.setFrameShadow(QFrame.Raised)
@@ -1454,6 +1494,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_23.addWidget(self.label_12, 0, Qt.AlignLeft|Qt.AlignVCenter)
 
         self.comboBox_dia = QComboBox(self.frame_13)
+        self.comboBox_dia.addItem("")
         self.comboBox_dia.addItem("")
         self.comboBox_dia.addItem("")
         self.comboBox_dia.addItem("")
@@ -1484,11 +1525,11 @@ class Ui_MainWindow(object):
         self.horizontalLayout_23.addWidget(self.comboBox_dia, 0, Qt.AlignRight)
 
 
-        self.verticalLayout_32.addWidget(self.frame_13)
+        self.verticalLayout_26.addWidget(self.frame_13)
 
         self.frame_16 = QFrame(self.frame_12)
         self.frame_16.setObjectName(u"frame_16")
-        self.frame_16.setMaximumSize(QSize(16777215, 50))
+        self.frame_16.setMaximumSize(QSize(16777215, 40))
         self.frame_16.setStyleSheet(u"background-color: rgb(217, 225, 230);")
         self.frame_16.setFrameShape(QFrame.Box)
         self.frame_16.setFrameShadow(QFrame.Raised)
@@ -1503,7 +1544,7 @@ class Ui_MainWindow(object):
         self.label_13.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
         self.label_13.setWordWrap(True)
 
-        self.horizontalLayout_24.addWidget(self.label_13, 0, Qt.AlignLeft)
+        self.horizontalLayout_24.addWidget(self.label_13, 0, Qt.AlignLeft|Qt.AlignVCenter)
 
         self.timeEdit_horario = QTimeEdit(self.frame_16)
         self.timeEdit_horario.setObjectName(u"timeEdit_horario")
@@ -1530,11 +1571,11 @@ class Ui_MainWindow(object):
         self.horizontalLayout_24.addWidget(self.timeEdit_horario, 0, Qt.AlignRight)
 
 
-        self.verticalLayout_32.addWidget(self.frame_16)
+        self.verticalLayout_26.addWidget(self.frame_16)
 
         self.frame_14 = QFrame(self.frame_12)
         self.frame_14.setObjectName(u"frame_14")
-        self.frame_14.setMaximumSize(QSize(16777215, 50))
+        self.frame_14.setMaximumSize(QSize(16777215, 40))
         self.frame_14.setStyleSheet(u"background-color: rgb(217, 225, 230);")
         self.frame_14.setFrameShape(QFrame.Box)
         self.frame_14.setFrameShadow(QFrame.Raised)
@@ -1575,11 +1616,11 @@ class Ui_MainWindow(object):
         self.horizontalLayout_25.addWidget(self.comboBox_genero, 0, Qt.AlignRight)
 
 
-        self.verticalLayout_32.addWidget(self.frame_14)
+        self.verticalLayout_26.addWidget(self.frame_14)
 
         self.frame_15 = QFrame(self.frame_12)
         self.frame_15.setObjectName(u"frame_15")
-        self.frame_15.setMaximumSize(QSize(16777215, 50))
+        self.frame_15.setMaximumSize(QSize(16777215, 40))
         self.frame_15.setStyleSheet(u"background-color: rgb(217, 225, 230);")
         self.frame_15.setFrameShape(QFrame.Box)
         self.frame_15.setFrameShadow(QFrame.Raised)
@@ -1591,7 +1632,7 @@ class Ui_MainWindow(object):
         self.checkBox_idade.setFont(font1)
         self.checkBox_idade.setCursor(QCursor(Qt.PointingHandCursor))
 
-        self.horizontalLayout_26.addWidget(self.checkBox_idade, 0, Qt.AlignLeft)
+        self.horizontalLayout_26.addWidget(self.checkBox_idade, 0, Qt.AlignLeft|Qt.AlignVCenter)
 
         self.frame_18 = QFrame(self.frame_15)
         self.frame_18.setObjectName(u"frame_18")
@@ -1604,6 +1645,7 @@ class Ui_MainWindow(object):
         self.spinBox_idadeInicial = QSpinBox(self.frame_18)
         self.spinBox_idadeInicial.setObjectName(u"spinBox_idadeInicial")
         self.spinBox_idadeInicial.setEnabled(False)
+        self.spinBox_idadeInicial.setFont(font11)
         self.spinBox_idadeInicial.setCursor(QCursor(Qt.PointingHandCursor))
         self.spinBox_idadeInicial.setStyleSheet(u"QSpinBox {\n"
 "    border-radius: 5px;\n"
@@ -1623,19 +1665,20 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_28.addWidget(self.spinBox_idadeInicial)
 
-        self.label_16 = QLabel(self.frame_18)
-        self.label_16.setObjectName(u"label_16")
-        self.label_16.setEnabled(False)
-        self.label_16.setMinimumSize(QSize(35, 0))
-        self.label_16.setFont(font7)
-        self.label_16.setAlignment(Qt.AlignHCenter|Qt.AlignTop)
-        self.label_16.setWordWrap(True)
+        self.label_age = QLabel(self.frame_18)
+        self.label_age.setObjectName(u"label_age")
+        self.label_age.setEnabled(False)
+        self.label_age.setMinimumSize(QSize(35, 0))
+        self.label_age.setFont(font7)
+        self.label_age.setAlignment(Qt.AlignHCenter|Qt.AlignTop)
+        self.label_age.setWordWrap(True)
 
-        self.horizontalLayout_28.addWidget(self.label_16, 0, Qt.AlignVCenter)
+        self.horizontalLayout_28.addWidget(self.label_age, 0, Qt.AlignVCenter)
 
         self.spinBox_idadeFinal = QSpinBox(self.frame_18)
         self.spinBox_idadeFinal.setObjectName(u"spinBox_idadeFinal")
         self.spinBox_idadeFinal.setEnabled(False)
+        self.spinBox_idadeFinal.setFont(font11)
         self.spinBox_idadeFinal.setCursor(QCursor(Qt.PointingHandCursor))
         self.spinBox_idadeFinal.setStyleSheet(u"QSpinBox {\n"
 "    border-radius: 5px;\n"
@@ -1659,11 +1702,11 @@ class Ui_MainWindow(object):
         self.horizontalLayout_26.addWidget(self.frame_18)
 
 
-        self.verticalLayout_32.addWidget(self.frame_15)
+        self.verticalLayout_26.addWidget(self.frame_15)
 
         self.frame_17 = QFrame(self.frame_12)
         self.frame_17.setObjectName(u"frame_17")
-        self.frame_17.setMaximumSize(QSize(16777215, 50))
+        self.frame_17.setMaximumSize(QSize(16777215, 40))
         self.frame_17.setStyleSheet(u"background-color: rgb(217, 225, 230);")
         self.frame_17.setFrameShape(QFrame.Box)
         self.frame_17.setFrameShadow(QFrame.Raised)
@@ -1684,22 +1727,106 @@ class Ui_MainWindow(object):
         self.lineEdit_codigoPais.setSizePolicy(sizePolicy2)
         self.lineEdit_codigoPais.setMinimumSize(QSize(100, 25))
         self.lineEdit_codigoPais.setFont(font4)
-        self.lineEdit_codigoPais.setStyleSheet(u"background-color: rgb(254, 254, 254);")
+        self.lineEdit_codigoPais.setStyleSheet(u"background-color: rgb(207, 215, 220);")
         self.lineEdit_codigoPais.setAlignment(Qt.AlignCenter)
 
         self.horizontalLayout_27.addWidget(self.lineEdit_codigoPais, 0, Qt.AlignRight)
 
 
-        self.verticalLayout_32.addWidget(self.frame_17)
+        self.verticalLayout_26.addWidget(self.frame_17)
 
-        self.button_imap_validate_2 = QPushButton(self.frame_12)
-        self.button_imap_validate_2.setObjectName(u"button_imap_validate_2")
-        sizePolicy2.setHeightForWidth(self.button_imap_validate_2.sizePolicy().hasHeightForWidth())
-        self.button_imap_validate_2.setSizePolicy(sizePolicy2)
-        self.button_imap_validate_2.setMinimumSize(QSize(120, 40))
-        self.button_imap_validate_2.setFont(font1)
-        self.button_imap_validate_2.setCursor(QCursor(Qt.PointingHandCursor))
-        self.button_imap_validate_2.setStyleSheet(u"QPushButton{\n"
+        self.frame_19 = QFrame(self.frame_12)
+        self.frame_19.setObjectName(u"frame_19")
+        self.frame_19.setMaximumSize(QSize(16777215, 40))
+        self.frame_19.setStyleSheet(u"background-color: rgb(217, 225, 230);")
+        self.frame_19.setFrameShape(QFrame.Box)
+        self.frame_19.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_29 = QHBoxLayout(self.frame_19)
+        self.horizontalLayout_29.setObjectName(u"horizontalLayout_29")
+        self.horizontalLayout_29.setContentsMargins(50, -1, 50, -1)
+        self.label_15 = QLabel(self.frame_19)
+        self.label_15.setObjectName(u"label_15")
+        self.label_15.setMinimumSize(QSize(50, 0))
+        self.label_15.setMaximumSize(QSize(80, 16777215))
+        self.label_15.setFont(font7)
+        self.label_15.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
+        self.label_15.setWordWrap(True)
+
+        self.horizontalLayout_29.addWidget(self.label_15, 0, Qt.AlignLeft)
+
+        self.comboBox_mensagem = QComboBox(self.frame_19)
+        self.comboBox_mensagem.setObjectName(u"comboBox_mensagem")
+        self.comboBox_mensagem.setMinimumSize(QSize(135, 0))
+        self.comboBox_mensagem.setFont(font11)
+        self.comboBox_mensagem.setCursor(QCursor(Qt.PointingHandCursor))
+        self.comboBox_mensagem.setStyleSheet(u"QComboBox {\n"
+"    border-radius: 5px;\n"
+"    padding: 2px 20px 2px 10px;\n"
+"    background-color: #FFFFFF;\n"
+"    selection-background-color: #EDEDED;\n"
+"    selection-color: #333333;\n"
+"    font-size: 14px;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView {\n"
+"	background-color: rgb(255, 255, 255);\n"
+"}\n"
+"")
+        self.comboBox_mensagem.setFrame(True)
+
+        self.horizontalLayout_29.addWidget(self.comboBox_mensagem, 0, Qt.AlignRight)
+
+
+        self.verticalLayout_26.addWidget(self.frame_19)
+
+        self.frame_resposta = QFrame(self.frame_12)
+        self.frame_resposta.setObjectName(u"frame_resposta")
+        self.frame_resposta.setEnabled(True)
+        self.frame_resposta.setMaximumSize(QSize(16777215, 40))
+        self.frame_resposta.setStyleSheet(u"background-color: rgb(217, 225, 230);")
+        self.frame_resposta.setFrameShape(QFrame.Box)
+        self.frame_resposta.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_32 = QHBoxLayout(self.frame_resposta)
+        self.horizontalLayout_32.setObjectName(u"horizontalLayout_32")
+        self.horizontalLayout_32.setContentsMargins(50, -1, 50, -1)
+        self.label_resposta = QLabel(self.frame_resposta)
+        self.label_resposta.setObjectName(u"label_resposta")
+        self.label_resposta.setEnabled(False)
+        self.label_resposta.setMinimumSize(QSize(50, 0))
+        self.label_resposta.setMaximumSize(QSize(120, 16777215))
+        self.label_resposta.setFont(font7)
+        self.label_resposta.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
+        self.label_resposta.setWordWrap(False)
+
+        self.horizontalLayout_32.addWidget(self.label_resposta, 0, Qt.AlignLeft)
+
+        self.lineEdit_resposta = QLineEdit(self.frame_resposta)
+        self.lineEdit_resposta.setObjectName(u"lineEdit_resposta")
+        self.lineEdit_resposta.setEnabled(True)
+        sizePolicy2.setHeightForWidth(self.lineEdit_resposta.sizePolicy().hasHeightForWidth())
+        self.lineEdit_resposta.setSizePolicy(sizePolicy2)
+        self.lineEdit_resposta.setMinimumSize(QSize(150, 25))
+        self.lineEdit_resposta.setFont(font4)
+        self.lineEdit_resposta.setStyleSheet(u"QLineEdit\n"
+"{\n"
+"background-color: rgb(207, 215, 220);\n"
+"}\n"
+"")
+        self.lineEdit_resposta.setAlignment(Qt.AlignCenter)
+
+        self.horizontalLayout_32.addWidget(self.lineEdit_resposta, 0, Qt.AlignRight)
+
+
+        self.verticalLayout_26.addWidget(self.frame_resposta)
+
+        self.button_adicionar_campanha = QPushButton(self.frame_12)
+        self.button_adicionar_campanha.setObjectName(u"button_adicionar_campanha")
+        sizePolicy2.setHeightForWidth(self.button_adicionar_campanha.sizePolicy().hasHeightForWidth())
+        self.button_adicionar_campanha.setSizePolicy(sizePolicy2)
+        self.button_adicionar_campanha.setMinimumSize(QSize(160, 40))
+        self.button_adicionar_campanha.setFont(font1)
+        self.button_adicionar_campanha.setCursor(QCursor(Qt.PointingHandCursor))
+        self.button_adicionar_campanha.setStyleSheet(u"QPushButton{\n"
 "background-color: rgb(158, 195, 255);\n"
 "border: 1px solid;\n"
 "border-radius:5px\n"
@@ -1712,7 +1839,7 @@ class Ui_MainWindow(object):
 "}\n"
 "")
 
-        self.verticalLayout_32.addWidget(self.button_imap_validate_2, 0, Qt.AlignHCenter)
+        self.verticalLayout_26.addWidget(self.button_adicionar_campanha, 0, Qt.AlignHCenter)
 
 
         self.verticalLayout_31.addWidget(self.frame_12)
@@ -1730,32 +1857,51 @@ class Ui_MainWindow(object):
         self.scrollArea_7.setWidgetResizable(True)
         self.scrollAreaWidgetContents_11 = QWidget()
         self.scrollAreaWidgetContents_11.setObjectName(u"scrollAreaWidgetContents_11")
-        self.scrollAreaWidgetContents_11.setGeometry(QRect(0, 0, 517, 424))
-        self.verticalLayout_29 = QVBoxLayout(self.scrollAreaWidgetContents_11)
-        self.verticalLayout_29.setObjectName(u"verticalLayout_29")
-        self.label_recipients_6 = QLabel(self.scrollAreaWidgetContents_11)
-        self.label_recipients_6.setObjectName(u"label_recipients_6")
-        self.label_recipients_6.setMinimumSize(QSize(0, 50))
-        self.label_recipients_6.setFont(font9)
-        self.label_recipients_6.setAlignment(Qt.AlignCenter)
+        self.scrollAreaWidgetContents_11.setGeometry(QRect(0, 0, 517, 435))
+        self.verticalLayout_27 = QVBoxLayout(self.scrollAreaWidgetContents_11)
+        self.verticalLayout_27.setObjectName(u"verticalLayout_27")
+        self.label_campaigns = QLabel(self.scrollAreaWidgetContents_11)
+        self.label_campaigns.setObjectName(u"label_campaigns")
+        self.label_campaigns.setMinimumSize(QSize(0, 50))
+        self.label_campaigns.setFont(font9)
+        self.label_campaigns.setAlignment(Qt.AlignCenter)
 
-        self.verticalLayout_29.addWidget(self.label_recipients_6)
+        self.verticalLayout_27.addWidget(self.label_campaigns)
 
-        self.listWidget_message_5 = QListWidget(self.scrollAreaWidgetContents_11)
-        self.listWidget_message_5.setObjectName(u"listWidget_message_5")
-        self.listWidget_message_5.setFont(font1)
-        self.listWidget_message_5.setStyleSheet(u"background-color: rgb(232, 240, 244);")
+        self.table_campaigns = QTableWidget(self.scrollAreaWidgetContents_11)
+        if (self.table_campaigns.columnCount() < 4):
+            self.table_campaigns.setColumnCount(4)
+        __qtablewidgetitem2 = QTableWidgetItem()
+        self.table_campaigns.setHorizontalHeaderItem(0, __qtablewidgetitem2)
+        __qtablewidgetitem3 = QTableWidgetItem()
+        self.table_campaigns.setHorizontalHeaderItem(1, __qtablewidgetitem3)
+        __qtablewidgetitem4 = QTableWidgetItem()
+        self.table_campaigns.setHorizontalHeaderItem(2, __qtablewidgetitem4)
+        __qtablewidgetitem5 = QTableWidgetItem()
+        self.table_campaigns.setHorizontalHeaderItem(3, __qtablewidgetitem5)
+        self.table_campaigns.setObjectName(u"table_campaigns")
+        self.table_campaigns.setFont(font1)
+        self.table_campaigns.viewport().setProperty("cursor", QCursor(Qt.PointingHandCursor))
+        self.table_campaigns.setStyleSheet(u"background-color: rgb(232, 240, 244);\n"
+"")
+        self.table_campaigns.setFrameShape(QFrame.NoFrame)
+        self.table_campaigns.setAlternatingRowColors(True)
+        self.table_campaigns.setSelectionMode(QAbstractItemView.NoSelection)
+        self.table_campaigns.setShowGrid(True)
+        self.table_campaigns.setGridStyle(Qt.SolidLine)
+        self.table_campaigns.setWordWrap(False)
+        self.table_campaigns.setCornerButtonEnabled(False)
 
-        self.verticalLayout_29.addWidget(self.listWidget_message_5)
+        self.verticalLayout_27.addWidget(self.table_campaigns)
 
-        self.button_excluir_message_5 = QPushButton(self.scrollAreaWidgetContents_11)
-        self.button_excluir_message_5.setObjectName(u"button_excluir_message_5")
-        sizePolicy2.setHeightForWidth(self.button_excluir_message_5.sizePolicy().hasHeightForWidth())
-        self.button_excluir_message_5.setSizePolicy(sizePolicy2)
-        self.button_excluir_message_5.setMinimumSize(QSize(120, 40))
-        self.button_excluir_message_5.setFont(font1)
-        self.button_excluir_message_5.setCursor(QCursor(Qt.PointingHandCursor))
-        self.button_excluir_message_5.setStyleSheet(u"QPushButton{\n"
+        self.button_excluir_campanha = QPushButton(self.scrollAreaWidgetContents_11)
+        self.button_excluir_campanha.setObjectName(u"button_excluir_campanha")
+        sizePolicy2.setHeightForWidth(self.button_excluir_campanha.sizePolicy().hasHeightForWidth())
+        self.button_excluir_campanha.setSizePolicy(sizePolicy2)
+        self.button_excluir_campanha.setMinimumSize(QSize(120, 40))
+        self.button_excluir_campanha.setFont(font1)
+        self.button_excluir_campanha.setCursor(QCursor(Qt.PointingHandCursor))
+        self.button_excluir_campanha.setStyleSheet(u"QPushButton{\n"
 "background-color: rgb(255, 75, 78);\n"
 "border: 1px solid;\n"
 "border-radius:5px\n"
@@ -1768,7 +1914,7 @@ class Ui_MainWindow(object):
 "}\n"
 "")
 
-        self.verticalLayout_29.addWidget(self.button_excluir_message_5, 0, Qt.AlignHCenter)
+        self.verticalLayout_27.addWidget(self.button_excluir_campanha, 0, Qt.AlignHCenter)
 
         self.scrollArea_7.setWidget(self.scrollAreaWidgetContents_11)
 
@@ -1975,7 +2121,9 @@ class Ui_MainWindow(object):
         self.lineEdit_imap_senha.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Senha", None))
         self.button_imap_validate.setText(QCoreApplication.translate("MainWindow", u"Validar", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_imap), QCoreApplication.translate("MainWindow", u"IMAP", None))
-        self.label_11.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:14pt;\">Adicionar campanha</span></p></body></html>", None))
+        self.label_16.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:12pt;\">Tipo</span></p></body></html>", None))
+        self.radioButton_inicial.setText(QCoreApplication.translate("MainWindow", u"Inicial", None))
+        self.radioButton_resposta.setText(QCoreApplication.translate("MainWindow", u"Resposta", None))
         self.label_12.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:12pt;\">Dia</span></p></body></html>", None))
         self.comboBox_dia.setItemText(0, QCoreApplication.translate("MainWindow", u"Segunda-Feira", None))
         self.comboBox_dia.setItemText(1, QCoreApplication.translate("MainWindow", u"Ter\u00e7a-Feira", None))
@@ -1984,6 +2132,7 @@ class Ui_MainWindow(object):
         self.comboBox_dia.setItemText(4, QCoreApplication.translate("MainWindow", u"Sexta-Feira", None))
         self.comboBox_dia.setItemText(5, QCoreApplication.translate("MainWindow", u"S\u00e1bado", None))
         self.comboBox_dia.setItemText(6, QCoreApplication.translate("MainWindow", u"Domingo", None))
+        self.comboBox_dia.setItemText(7, QCoreApplication.translate("MainWindow", u"Todo dia", None))
 
         self.comboBox_dia.setCurrentText(QCoreApplication.translate("MainWindow", u"Segunda-Feira", None))
         self.label_13.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:12pt;\">Hor\u00e1rio</span></p></body></html>", None))
@@ -1993,12 +2142,25 @@ class Ui_MainWindow(object):
         self.comboBox_genero.setItemText(2, QCoreApplication.translate("MainWindow", u"Todos", None))
 
         self.checkBox_idade.setText(QCoreApplication.translate("MainWindow", u"Filtrar por idade", None))
-        self.label_16.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:12pt;\">at\u00e9</span></p></body></html>", None))
+        self.label_age.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:12pt;\">at\u00e9</span></p></body></html>", None))
         self.checkBox_pais.setText(QCoreApplication.translate("MainWindow", u"Filtrar por pa\u00eds", None))
         self.lineEdit_codigoPais.setPlaceholderText(QCoreApplication.translate("MainWindow", u"C\u00f3digo do pa\u00eds", None))
-        self.button_imap_validate_2.setText(QCoreApplication.translate("MainWindow", u"Adicionar", None))
-        self.label_recipients_6.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:14pt;\">Campanhas em funcionamento</span></p></body></html>", None))
-        self.button_excluir_message_5.setText(QCoreApplication.translate("MainWindow", u"Excluir", None))
+        self.label_15.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:12pt;\">Mensagem</span></p></body></html>", None))
+        self.comboBox_mensagem.setCurrentText("")
+        self.label_resposta.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:12pt;\">Exige a resposta</span></p></body></html>", None))
+        self.lineEdit_resposta.setText("")
+        self.lineEdit_resposta.setPlaceholderText("")
+        self.button_adicionar_campanha.setText(QCoreApplication.translate("MainWindow", u"Adicionar campanha", None))
+        self.label_campaigns.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:14pt;\">Campanhas em funcionamento</span></p></body></html>", None))
+        ___qtablewidgetitem2 = self.table_campaigns.horizontalHeaderItem(0)
+        ___qtablewidgetitem2.setText(QCoreApplication.translate("MainWindow", u"Tipo", None));
+        ___qtablewidgetitem3 = self.table_campaigns.horizontalHeaderItem(1)
+        ___qtablewidgetitem3.setText(QCoreApplication.translate("MainWindow", u"Dia", None));
+        ___qtablewidgetitem4 = self.table_campaigns.horizontalHeaderItem(2)
+        ___qtablewidgetitem4.setText(QCoreApplication.translate("MainWindow", u"Hor\u00e1rio", None));
+        ___qtablewidgetitem5 = self.table_campaigns.horizontalHeaderItem(3)
+        ___qtablewidgetitem5.setText(QCoreApplication.translate("MainWindow", u"Mensagem", None));
+        self.button_excluir_campanha.setText(QCoreApplication.translate("MainWindow", u"Excluir", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_envios), QCoreApplication.translate("MainWindow", u"Envios", None))
         self.label_title_5.setText(QCoreApplication.translate("MainWindow", u"Ajuda", None))
         self.label_title_6.setText(QCoreApplication.translate("MainWindow", u"Sobre", None))

@@ -47,23 +47,15 @@ font-weight: bold;
 line_edit_style = """
 QLineEdit
 {
-background-color: rgb(227, 235, 240);
-border: 1px solid;
-border-radius:5px
-}
-
-QLineEdit:hover
-{
-background-color: rgb(236, 244, 248);
+background-color: rgb(255, 255, 255);
+color: black;
 }
 """
 
 line_edit_gray = """
 QLineEdit
 {
-background-color: rgb(200, 208, 213);
-border: 1px solid;
-border-radius:5px
+background-color: rgb(207, 215, 220);
 }
 
 

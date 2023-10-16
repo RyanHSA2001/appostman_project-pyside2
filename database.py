@@ -204,9 +204,33 @@ class SystemDataBase:
             'age' INTEGER,
             'country_code' TEXT,
             'message_id' INTEGER NOT NULL,
+            'type' TEXT NOT NULL,
+            'answer' TEXT,
             FOREIGN KEY ('message_id') REFERENCES 'messages'('message_id') 
             );
             """)
+
+    def insert_campaign(self, day, time, message_id, type, country='null', answer='null', sex='null', age='null'):
+        self.cursor.execute(
+            """
+            INSERT INTO campaigns(week_day, time, sex, age, country_code, message_id, type, answer) 
+            VALUES(?, ?, ?, ?, ?, ?, ?, ?)
+            """, (day, time, sex, age, country, message_id, type, answer)
+
+        )
+
+    def select_campaign(self):
+        self.cursor.execute(
+            """
+            SELECT * FROM campaigns
+            """
+        )
+        result = self.cursor.fetchall()
+        return result
+
+
+
+
 
     def create_table_smtp(self):
         self.cursor.execute(
@@ -267,6 +291,16 @@ class SystemDataBase:
             SELECT message_id FROM messages WHERE path=?
             """, (path,))
 
+        result = self.cursor.fetchone()
+        if not result:
+            return False
+        return result[0]
+
+    def select_message_by_id(self, id):
+        self.cursor.execute(
+            """
+            SELECT name FROM messages WHERE message_id=?
+            """, (id,))
         result = self.cursor.fetchone()
         if not result:
             return False

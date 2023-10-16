@@ -249,6 +249,21 @@ class MainWindow(QMainWindow, Ui_MainWindow, UtilityFunctions):
         self.button_smtp_validate.clicked.connect(self.validate_smtp)
         self.button_imap_validate.clicked.connect(self.validate_imap)
         self.preset_protocols_configurations()
+        self.checkBox_idade.clicked.connect(self.enable_disable_age)
+        self.checkBox_pais.clicked.connect(self.enable_disable_country)
+        self.button_adicionar_campanha.clicked.connect(self.add_campaign)
+        self.radioButton_resposta.clicked.connect(self.enable_by_type)
+        self.radioButton_inicial.clicked.connect(self.enable_by_type)
+        self.refresh_message_list()
+        horizontal_header = self.table_campaigns.horizontalHeader()
+        horizontal_header.setStyleSheet(styles.horizontal_header_style)
+        horizontal_header.setSectionResizeMode(0, QHeaderView.Stretch)
+        horizontal_header.setSectionResizeMode(1, QHeaderView.Stretch)
+        horizontal_header.setSectionResizeMode(2, QHeaderView.Stretch)
+        horizontal_header.setSectionResizeMode(3, QHeaderView.Stretch)
+        self.table_campaigns.verticalHeader().setVisible(False)
+        self.show_campaings()
+
 
 
     def restore_or_maximize_window(self):
@@ -361,6 +376,7 @@ class MainWindow(QMainWindow, Ui_MainWindow, UtilityFunctions):
             self.open_message_box(QMessageBox.Warning, "Erro", str(e), self)
 
     def show_recipients(self):
+
         with SystemDataBase(self.logged_user_db) as db:
             result = db.select_recipients()
 
@@ -383,6 +399,50 @@ class MainWindow(QMainWindow, Ui_MainWindow, UtilityFunctions):
             row +=1
 
             self.label_recipients.setText(f"Destinatários Encontrados: {row}")
+
+
+    def show_campaings(self):
+
+        self.table_campaigns.clear()
+
+        column_names = ['Tipo', 'Dia', 'Horário', 'Mensagem']
+        self.table_campaigns.setHorizontalHeaderLabels(column_names)
+
+        with SystemDataBase(self.logged_user_db) as db:
+            result = db.select_campaign()
+
+            message_list = []
+            for campaign in result:
+                message_list.append(db.select_message_by_id(campaign[6]))
+
+        row = 0
+        self.table_campaigns.setRowCount(len(result))
+        for campaign in result:
+            print(campaign)
+            item1 = QTableWidgetItem(campaign[7])
+            item2 = QTableWidgetItem(campaign[1])
+            item3 = QTableWidgetItem(campaign[2])
+            item4 = QTableWidgetItem(message_list[row])
+
+            font = QFont("Rockwell", 12)
+            item1.setFont(font)
+            item2.setFont(font)
+            item3.setFont(font)
+            item4.setFont(font)
+
+            item1.setFlags(item1.flags() ^ Qt.ItemIsEditable)
+            item2.setFlags(item2.flags() ^ Qt.ItemIsEditable)
+            item3.setFlags(item3.flags() ^ Qt.ItemIsEditable)
+            item4.setFlags(item4.flags() ^ Qt.ItemIsEditable)
+
+            self.table_campaigns.setItem(row, 0, item1)
+            self.table_campaigns.setItem(row, 1, item2)
+            self.table_campaigns.setItem(row, 2, item3)
+            self.table_campaigns.setItem(row, 3, item4)
+
+            row += 1
+
+            self.label_campaigns.setText(f"Campanhas em funcionamento: {row}")
 
     # Funções tela de mensagens
 
@@ -488,6 +548,7 @@ class MainWindow(QMainWindow, Ui_MainWindow, UtilityFunctions):
     def refresh_message_list(self):
         self.listWidget_message.clear()
         self.show_messages()
+        self.fill_message_combobox()
 
     def delete_item(self):
         item = self.listWidget_message.currentItem()
@@ -549,6 +610,76 @@ class MainWindow(QMainWindow, Ui_MainWindow, UtilityFunctions):
             self.lineEdit_imap_porta.setText(self.imap[1])
             self.lineEdit_imap_email.setText(self.imap[2])
             self.lineEdit_imap_senha.setText(self.imap[3])
+
+    def enable_disable_age(self):
+        if self.checkBox_idade.isChecked():
+            self.spinBox_idadeInicial.setEnabled(True)
+            self.spinBox_idadeFinal.setEnabled(True)
+            self.label_age.setEnabled(True)
+        else:
+            self.label_age.setEnabled(False)
+            self.spinBox_idadeInicial.setEnabled(False)
+            self.spinBox_idadeFinal.setEnabled(False)
+
+    def enable_disable_country(self):
+        if self.checkBox_pais.isChecked():
+            self.lineEdit_codigoPais.setEnabled(True)
+            self.lineEdit_codigoPais.setStyleSheet(styles.line_edit_style)
+        else:
+            self.lineEdit_codigoPais.setEnabled(False)
+            self.lineEdit_codigoPais.setStyleSheet(styles.line_edit_gray)
+
+    def enable_by_type(self):
+        if self.radioButton_inicial.isChecked():
+            self.label_resposta.setEnabled(False)
+            self.lineEdit_resposta.setEnabled(False)
+            self.lineEdit_resposta.setStyleSheet(styles.line_edit_gray)
+            self.campaign_type = "inicial"
+        elif self.radioButton_resposta.isChecked():
+            self.label_resposta.setEnabled(True)
+            self.lineEdit_resposta.setEnabled(True)
+            self.lineEdit_resposta.setStyleSheet(styles.line_edit_style)
+            self.campaign_type = "resposta"
+
+    def fill_message_combobox(self):
+        self.comboBox_mensagem.clear()
+
+        with SystemDataBase(self.logged_user_db) as db:
+            mensagens = db.select_all_messages()
+
+        for mensagem in mensagens:
+            self.comboBox_mensagem.addItem(mensagem[2])
+        print(mensagens)
+
+    def add_campaign(self):
+        dia = self.comboBox_dia.currentText()
+        horario = self.timeEdit_horario.time()
+        horario = horario.toString("HH:mm:ss")
+        genero = self.comboBox_genero.currentText()
+        idade = str(self.spinBox_idadeInicial.value()) + "-" + str(self.spinBox_idadeFinal.value())
+        pais = self.lineEdit_codigoPais.text()
+        message = self.comboBox_mensagem.currentText()
+        answer = self.lineEdit_resposta.text()
+
+
+        if self.radioButton_inicial.isChecked():
+            with SystemDataBase(self.logged_user_db) as db:
+                message_path = db.select_message_byname(message)
+                message_id = db.select_message_bypath(message_path)
+
+                db.insert_campaign(dia, horario, message_id, 'inicial', pais, answer, genero, idade)
+
+
+        elif self.radioButton_resposta.isChecked():
+            with SystemDataBase(self.logged_user_db) as db:
+                message_path = db.select_message_byname(message)
+                message_id = db.select_message_bypath(message_path)
+
+                db.insert_campaign(dia, horario, message_id, 'resposta', pais, answer, genero, idade)
+
+        self.show_campaings()
+
+
 
 
 if __name__ == "__main__":
