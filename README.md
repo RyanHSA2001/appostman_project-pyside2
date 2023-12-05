@@ -1,3 +1,10 @@
-<h1>Appostman - Software de gerenciamento e automação de e-mail markenting</h1>
+<h1>Appostman - Protótipo de software de gerenciamento e automação de e-mail markenting</h1>
 
-Projeto destinado a Fatec Americana como trabalho de conclusão de curso.
+Protótipo de software com objetivo de automatizar a criação de campanhas de marketing digital por e-mail. 
+
+Em seu desenvolvimento foram utilizadas as ferramentas:
+
+• Pyhon
+• QT
+• QTDesigner
+• SQLITE3
