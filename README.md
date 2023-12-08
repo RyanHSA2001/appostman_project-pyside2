@@ -9,4 +9,4 @@ Em seu desenvolvimento foram utilizadas as ferramentas:
 • QTDesigner
 • SQLITE3
 
-A estrutura do software está toda pronta, porém a parte dos relatórios ainda não foi implementada, e por conta disso consideramos como um protótipo.
+A estrutura do software está toda pronta, porém algumas configurações da campanha e a parte dos relatórios ainda não foi implementada, e por conta disso considero como um protótipo. Futuramente pretendo concluir o desenvolvimento e distribuir o software gratuitamente.
