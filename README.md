@@ -8,3 +8,5 @@ Em seu desenvolvimento foram utilizadas as ferramentas:
 • QT
 • QTDesigner
 • SQLITE3
+
+A estrutura do software está toda pronta, porém a parte dos relatórios ainda não foi implementada, e por conta disso consideramos como um protótipo.
